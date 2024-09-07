@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:trendscope/core/di.dart';
 import 'package:trendscope/data/network/app_mock_api.dart';
 import 'package:logger/logger.dart';
+import 'package:trendscope/presentation/stock_chart_view/stock_chart_view.dart';
 
 final appLogger = Logger();
 void main() async {
@@ -17,7 +20,9 @@ void main() async {
   // } catch (e) {
   //   logger.e(e);
   // }
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await setup();
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(),
+      home: StockChartView(),
     );
   }
 }

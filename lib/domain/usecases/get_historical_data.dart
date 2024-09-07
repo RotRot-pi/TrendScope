@@ -8,8 +8,7 @@ class GetHistoricalData {
   final Repository _repository;
   GetHistoricalData(this._repository);
 
-  Future<Either<Failure, StockData>> call(
-      String function, String symbol) async {
+  Future<StockData> call(String function, String symbol) async {
     return await _repository.getHistoricalData(function, symbol);
   }
 }

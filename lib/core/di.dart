@@ -7,7 +7,7 @@ import 'package:trendscope/domain/usecases/get_historical_data.dart';
 
 final instance = GetIt.instance;
 
-void setup() {
+setup() {
   final Dio dio = Dio();
   instance.registerLazySingleton<AppMockApi>(() => AppMockApi(dio));
 

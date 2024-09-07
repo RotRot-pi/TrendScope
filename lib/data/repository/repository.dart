@@ -14,11 +14,10 @@ class RepositoryImpl implements Repository {
       : _dio = dio,
         _appMockApi = appMockApi;
   @override
-  Future<Either<Failure, StockData>> getHistoricalData(
-      String function, String symbol) async {
+  Future<StockData> getHistoricalData(String function, String symbol) async {
     try {
       final response = await _appMockApi.getHistoricalData(function, symbol);
-      return Right(response);
+      return response;
     } catch (e) {
       appLogger.e(e);
       throw Exception(e.toString());

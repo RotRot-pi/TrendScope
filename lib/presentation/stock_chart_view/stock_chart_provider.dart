@@ -13,8 +13,7 @@ import 'package:trendscope/domain/usecases/get_historical_data.dart';
 //i need the stock data time series for the date
 //and the daily data for the prices and volume
 
-final stockChartProvider =
-    FutureProvider.family<Either<Failure, StockData>, String>(
+final stockChartProvider = FutureProvider.family<StockData, String>(
   (ref, symbol) async {
     return ref
         .read(getHistoricalDataProvider)

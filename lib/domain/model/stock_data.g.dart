@@ -8,9 +8,8 @@ part of 'stock_data.dart';
 
 _$StockDataImpl _$$StockDataImplFromJson(Map<String, dynamic> json) =>
     _$StockDataImpl(
-      metaData: MetaData.fromJson(json['Meta Data'] as Map<String, dynamic>),
-      timeSeriesDaily:
-          (json['Time Series (Daily)'] as Map<String, dynamic>).map(
+      metaData: MetaData.fromJson(json['metaData'] as Map<String, dynamic>),
+      timeSeriesDaily: (json['timeSeriesDaily'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(k, DailyData.fromJson(e as Map<String, dynamic>)),
       ),
     );
@@ -23,11 +22,11 @@ Map<String, dynamic> _$$StockDataImplToJson(_$StockDataImpl instance) =>
 
 _$MetaDataImpl _$$MetaDataImplFromJson(Map<String, dynamic> json) =>
     _$MetaDataImpl(
-      information: json['1. Information'] ?? '0.0' as String,
-      symbol: json['2. Symbol'] ?? '0.0' as String,
-      lastRefreshed: json['3. Last Refreshed'] ?? '0.0' as String,
-      outputSize: json['4 Output Size'] ?? '0.0' as String,
-      timeZone: json['5. Time Zone'] ?? '0.0' as String,
+      information: json['information'] as String,
+      symbol: json['symbol'] as String,
+      lastRefreshed: json['lastRefreshed'] as String,
+      outputSize: json['outputSize'] as String,
+      timeZone: json['timeZone'] as String,
     );
 
 Map<String, dynamic> _$$MetaDataImplToJson(_$MetaDataImpl instance) =>
@@ -41,11 +40,11 @@ Map<String, dynamic> _$$MetaDataImplToJson(_$MetaDataImpl instance) =>
 
 _$DailyDataImpl _$$DailyDataImplFromJson(Map<String, dynamic> json) =>
     _$DailyDataImpl(
-      open: json['1. open'] ?? '0.0' as String,
-      high: json['2. high'] ?? '0.0' as String,
-      low: json['3. low'] ?? '0.0' as String,
-      close: json['4. close'] ?? '0.0' as String,
-      volume: json['5. volume'] ?? '0.0' as String,
+      open: json['open'] as String,
+      high: json['high'] as String,
+      low: json['low'] as String,
+      close: json['close'] as String,
+      volume: json['volume'] as String,
     );
 
 Map<String, dynamic> _$$DailyDataImplToJson(_$DailyDataImpl instance) =>

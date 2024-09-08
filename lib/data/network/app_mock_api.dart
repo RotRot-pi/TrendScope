@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:trendscope/domain/model/stock_data.dart';
+import 'package:trendscope/domain/model/stocks_response.dart';
 
 part 'app_mock_api.g.dart';
 
@@ -14,4 +15,7 @@ abstract class AppMockApi {
     @Query("symbol") String symbol,
     // @Query("apikey") String apiKey,
   );
+
+  @GET("/stocks")
+  Future<StocksResponse> getStocks();
 }

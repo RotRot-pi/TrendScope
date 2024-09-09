@@ -6,7 +6,7 @@ class GetStocks {
   final Repository _repository;
   GetStocks(this._repository);
 
-  Future<StocksResponse> call(String function, String symbol) async {
+  Future<StocksResponse> call() async {
     return await _repository.getStocks();
   }
 }

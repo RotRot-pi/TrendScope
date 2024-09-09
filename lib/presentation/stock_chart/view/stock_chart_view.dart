@@ -14,40 +14,50 @@ class StockChartView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final stockData = ref.watch(stockChartProvider('AAPL'));
+    String symbol = ModalRoute.of(context)?.settings.arguments as String;
+    final stockData = ref.watch(stockChartProvider(symbol));
     return Scaffold(
       appBar: AppBar(
         title: const Text('Stock Chart'),
       ),
-      body: stockData.when(
-        data: (data) {
-          print("Min Date: ${data.timeSeriesDaily.keys.first}");
-          print("Max Date: ${data.timeSeriesDaily.keys.last}");
-          List<String> dates = data.timeSeriesDaily.keys.toList();
-          //last 7 days
-          var min = DateTime.parse(dates[dates.length - 9]);
-          var max = DateTime.parse(dates[dates.length - 1]);
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height / 3,
+        child: stockData.when(
+          data: (data) {
+            print("Data Length: ${data.timeSeriesDaily.values.first}");
+            print("Min Date: ${data.timeSeriesDaily.keys.first}");
+            print("Max Date: ${data.timeSeriesDaily.keys.last}");
 
-          var minVolume = data.timeSeriesDaily.values
-              .skip(dates.length - 9)
-              .reduce((curr, next) =>
-                  double.parse(curr.volume) < double.parse(next.volume)
-                      ? curr
-                      : next)
-              .volume;
-          var maxVolume = data.timeSeriesDaily.values
-              .skip(dates.length - 9)
-              .reduce((curr, next) =>
-                  double.parse(curr.volume) > double.parse(next.volume)
-                      ? curr
-                      : next)
-              .volume;
-          return StockChartWidget(
-              data: data, maxVolume: maxVolume, min: min, max: max);
-        },
-        error: (error, stackTrace) => Center(child: Text(error.toString())),
-        loading: () => const Center(
-          child: CircularProgressIndicator(),
+            List<String> dates = data.timeSeriesDaily.keys.toList();
+            //last 7 days
+            var min = DateTime.parse(dates[dates.length - 9]);
+            var max = DateTime.parse(dates[dates.length - 1]);
+
+            var minVolume = data.timeSeriesDaily.values
+                .skip(dates.length - 9)
+                .reduce((curr, next) =>
+                    double.parse(curr.volume) < double.parse(next.volume)
+                        ? curr
+                        : next)
+                .volume;
+            var maxVolume = data.timeSeriesDaily.values
+                .skip(dates.length - 9)
+                .reduce((curr, next) =>
+                    double.parse(curr.volume) > double.parse(next.volume)
+                        ? curr
+                        : next)
+                .volume;
+            return StockChartWidget(
+              data: data,
+              maxVolume: maxVolume,
+              min: min,
+              max: max,
+            );
+          },
+          error: (error, stackTrace) => Center(child: Text(error.toString())),
+          loading: () => const Center(
+            child: CircularProgressIndicator(),
+          ),
         ),
       ),
     );
@@ -74,12 +84,12 @@ class StockChartWidget extends StatelessWidget {
         NumericAxis(
           name: 'Y-Axis',
           opposedPosition: true,
-          maximum: (100 * double.parse(maxVolume)) / 5,
+          maximum: (100 * double.parse(maxVolume)) / 6,
           isVisible: false,
         )
       ],
       primaryXAxis: DateTimeAxis(
-        dateFormat: DateFormat('EEE, d'),
+        dateFormat: DateFormat('EEE'),
         intervalType: DateTimeIntervalType.days,
         interval: 1,
         //show only the last 7 days
@@ -88,8 +98,8 @@ class StockChartWidget extends StatelessWidget {
         majorGridLines: const MajorGridLines(width: 1),
       ),
       primaryYAxis: const NumericAxis(
-        minimum: 100,
-        maximum: 180,
+        minimum: 140,
+        maximum: 160,
         majorGridLines: MajorGridLines(width: 1),
       ),
       series: <CartesianSeries>[

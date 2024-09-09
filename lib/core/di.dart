@@ -4,6 +4,7 @@ import 'package:trendscope/data/network/app_mock_api.dart';
 import 'package:trendscope/data/repository/repository.dart';
 import 'package:trendscope/domain/repository/repository.dart';
 import 'package:trendscope/domain/usecases/get_historical_data.dart';
+import 'package:trendscope/domain/usecases/get_stocks.dart';
 
 final instance = GetIt.instance;
 
@@ -16,4 +17,6 @@ setup() {
 
   instance.registerLazySingleton<GetHistoricalData>(
       () => GetHistoricalData(instance()));
+
+  instance.registerLazySingleton<GetStocks>(() => GetStocks(instance()));
 }

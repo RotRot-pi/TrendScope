@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:trendscope/core/colors.dart';
 import 'package:trendscope/core/di.dart';
 import 'package:logger/logger.dart';
-import 'package:trendscope/presentation/stock_chart/view/stock_chart_view.dart';
+import 'package:trendscope/core/theme.dart';
+import 'package:trendscope/presentation/market/view/market_view.dart';
 
 final appLogger = Logger();
 void main() async {
@@ -19,9 +21,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Stock Analysis',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const StockChartView(),
+          textTheme: textTheme,
+          scaffoldBackgroundColor: whiteColor,
+          appBarTheme: const AppBarTheme(backgroundColor: whiteColor)),
+      home: const MarketView(),
     );
   }
 }

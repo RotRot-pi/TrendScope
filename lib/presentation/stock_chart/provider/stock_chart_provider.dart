@@ -1,11 +1,8 @@
 //Create stock chart provider using riverpod
-import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:trendscope/core/di.dart';
-import 'package:trendscope/data/network/failure.dart';
 import 'package:trendscope/domain/model/stock_data.dart';
-import 'package:trendscope/domain/repository/repository.dart';
 import 'package:trendscope/domain/usecases/get_historical_data.dart';
 
 //stock chart provider
@@ -20,10 +17,9 @@ final stockChartProvider = FutureProvider.family<StockData, String>(
         .call('TIME_SERIES_DAILY', symbol);
   },
 );
+
 final getHistoricalDataProvider = Provider<GetHistoricalData>(
   (ref) => GetHistoricalData(
-    ref.watch(repositoryProvider),
+    instance(),
   ),
 );
-
-final repositoryProvider = Provider<Repository>((ref) => instance());

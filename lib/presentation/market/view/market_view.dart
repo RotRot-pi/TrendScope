@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:trendscope/core/colors.dart';
 import 'package:trendscope/domain/model/stocks_response.dart';
 import 'package:trendscope/presentation/market/provider/market_provider.dart';
+import 'package:trendscope/presentation/market/widgets/bottom_nav_bar.dart';
 import 'package:trendscope/presentation/stock_chart/view/stock_chart_view.dart';
 
 class MarketView extends ConsumerWidget {
@@ -36,6 +37,12 @@ class MarketView extends ConsumerWidget {
               MarketList(marketData: marketData),
             ],
           ),
+          const Positioned(
+            bottom: 16,
+            left: 48,
+            right: 48,
+            child: BottomNavBar(),
+          )
         ],
       ),
     );

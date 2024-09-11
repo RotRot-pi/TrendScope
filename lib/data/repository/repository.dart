@@ -11,9 +11,67 @@ class RepositoryImpl implements Repository {
   RepositoryImpl({required Dio dio, required AppMockApi appMockApi})
       : _appMockApi = appMockApi;
   @override
-  Future<StockData> getHistoricalData(String function, String symbol) async {
+  Future<StockData> getHistoricalDataDaily(String symbol) async {
     try {
-      final response = await _appMockApi.getHistoricalData(function, symbol);
+      final response =
+          await _appMockApi.getHistoricalDataDaily('TIME_SERIES_DAILY', symbol);
+      appLogger.d("Daily response: $response");
+      return response;
+    } catch (e) {
+      appLogger.e(e);
+      throw Exception(e.toString());
+      //     return Left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<StockData> getHistoricalDataWeekly(String symbol) async {
+    try {
+      final response = await _appMockApi.getHistoricalDataWeekly(
+          'TIME_SERIES_WEEKLY', symbol);
+      appLogger.d("Weekly response: $response");
+      return response;
+    } catch (e) {
+      appLogger.e(e);
+      throw Exception(e.toString());
+      //     return Left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<StockData> getHistoricalDataMonthly(String symbol) async {
+    try {
+      final response = await _appMockApi.getHistoricalDataMonthly(
+          'TIME_SERIES_MONTHLY', symbol);
+      appLogger.d("Monthly response: $response");
+      return response;
+    } catch (e) {
+      appLogger.e(e);
+      throw Exception(e.toString());
+      //     return Left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<StockData> getHistoricalDataYearly(String symbol) async {
+    try {
+      final response = await _appMockApi.getHistoricalDataYearly(
+          'TIME_SERIES_YEARLY', symbol);
+      appLogger.d("Yearly response: $response");
+      return response;
+    } catch (e) {
+      appLogger.e(e);
+      throw Exception(e.toString());
+      //     return Left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<StockData> getHistoricalDataFiveYears(String symbol) async {
+    try {
+      final response = await _appMockApi.getHistoricalDataFiveYears(
+          'TIME_SERIES_5YEAR', symbol);
+      appLogger.d("5 Years response: $response");
       return response;
     } catch (e) {
       appLogger.e(e);

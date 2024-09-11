@@ -20,23 +20,23 @@ class StockChartView extends ConsumerWidget {
         height: MediaQuery.of(context).size.height / 3,
         child: stockData.when(
           data: (data) {
-            print("Data Length: ${data.timeSeriesDaily.values.first}");
-            print("Min Date: ${data.timeSeriesDaily.keys.first}");
-            print("Max Date: ${data.timeSeriesDaily.keys.last}");
+            print("Data Length: ${data.timeSeriesWeekly?.values.first}");
+            print("Min Date: ${data.timeSeriesWeekly?.keys.first}");
+            print("Max Date: ${data.timeSeriesWeekly?.keys.last}");
 
-            List<String> dates = data.timeSeriesDaily.keys.toList();
+            List<String> dates = data.timeSeriesWeekly!.keys.toList();
             //last 7 days
             var min = DateTime.parse(dates[dates.length - 9]);
             var max = DateTime.parse(dates[dates.length - 1]);
 
-            var minVolume = data.timeSeriesDaily.values
+            var minVolume = data.timeSeriesWeekly?.values
                 .skip(dates.length - 9)
                 .reduce((curr, next) =>
                     double.parse(curr.volume) < double.parse(next.volume)
                         ? curr
                         : next)
                 .volume;
-            var maxVolume = data.timeSeriesDaily.values
+            var maxVolume = data.timeSeriesWeekly?.values
                 .skip(dates.length - 9)
                 .reduce((curr, next) =>
                     double.parse(curr.volume) > double.parse(next.volume)
@@ -44,11 +44,7 @@ class StockChartView extends ConsumerWidget {
                         : next)
                 .volume;
             return StockChartWidget(
-              data: data,
-              maxVolume: maxVolume,
-              min: min,
-              max: max,
-            );
+                maxVolume: maxVolume ?? '0', min: min, max: max, data: data);
           },
           error: (error, stackTrace) => Center(child: Text(error.toString())),
           loading: () => const Center(

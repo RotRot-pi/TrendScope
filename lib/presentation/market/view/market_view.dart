@@ -50,10 +50,10 @@ class MarketView extends ConsumerWidget {
 }
 
 class TopButtonsList extends StatefulWidget {
-  const TopButtonsList({Key? key}) : super(key: key);
+  const TopButtonsList({super.key});
 
   @override
-  _TopButtonsListState createState() => _TopButtonsListState();
+  State<TopButtonsList> createState() => _TopButtonsListState();
 }
 
 class _TopButtonsListState extends State<TopButtonsList> {

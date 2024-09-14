@@ -9,7 +9,6 @@ import 'package:trendscope/main.dart';
 import 'package:trendscope/presentation/common/helpers/chart_data_processor.dart';
 import 'package:trendscope/presentation/common/objects/chart_data_object.dart';
 import 'package:trendscope/presentation/stock_chart/provider/stock_chart_provider.dart';
-import 'dart:math' as math;
 
 import 'package:trendscope/presentation/stock_chart/widgets/candlestick_chart_widget.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/volume_chart_widget.dart';

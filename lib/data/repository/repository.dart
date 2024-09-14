@@ -15,7 +15,7 @@ class RepositoryImpl implements Repository {
     try {
       final response =
           await _appMockApi.getHistoricalDataDaily('TIME_SERIES_DAILY', symbol);
-      appLogger.d("Daily response: $response");
+      appLogger.d("Daily response: ${response.timeSeriesDaily?.values.first}");
       return response;
     } catch (e) {
       appLogger.e(e);
@@ -29,7 +29,8 @@ class RepositoryImpl implements Repository {
     try {
       final response = await _appMockApi.getHistoricalDataWeekly(
           'TIME_SERIES_WEEKLY', symbol);
-      appLogger.d("Weekly response: $response");
+      appLogger
+          .d("Weekly response: ${response.timeSeriesWeekly?.values.first}");
       return response;
     } catch (e) {
       appLogger.e(e);
@@ -43,7 +44,8 @@ class RepositoryImpl implements Repository {
     try {
       final response = await _appMockApi.getHistoricalDataMonthly(
           'TIME_SERIES_MONTHLY', symbol);
-      appLogger.d("Monthly response: $response");
+      appLogger
+          .d("Monthly response: ${response.timeSeriesMonthly?.values.first}");
       return response;
     } catch (e) {
       appLogger.e(e);
@@ -57,7 +59,8 @@ class RepositoryImpl implements Repository {
     try {
       final response = await _appMockApi.getHistoricalDataYearly(
           'TIME_SERIES_YEARLY', symbol);
-      appLogger.d("Yearly response: $response");
+      appLogger
+          .d("Yearly response: ${response.timeSeriesYearly?.values.first}");
       return response;
     } catch (e) {
       appLogger.e(e);
@@ -71,7 +74,8 @@ class RepositoryImpl implements Repository {
     try {
       final response = await _appMockApi.getHistoricalDataFiveYears(
           'TIME_SERIES_5YEAR', symbol);
-      appLogger.d("5 Years response: $response");
+      appLogger
+          .d("5 Years response: ${response.timeSeriesFiveYears?.values.first}");
       return response;
     } catch (e) {
       appLogger.e(e);

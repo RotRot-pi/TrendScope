@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Stock Analysis',
       theme: ThemeData(
+          colorSchemeSeed: primaryColor,
           textTheme: textTheme,
           scaffoldBackgroundColor: whiteColor,
           appBarTheme: const AppBarTheme(backgroundColor: whiteColor)),

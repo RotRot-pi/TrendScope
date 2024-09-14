@@ -6,6 +6,7 @@ import 'package:trendscope/domain/model/stocks_response.dart';
 import 'package:trendscope/presentation/market/provider/market_provider.dart';
 import 'package:trendscope/presentation/market/widgets/bottom_nav_bar.dart';
 import 'package:trendscope/presentation/stock_chart/view/stock_chart_view.dart';
+import 'package:trendscope/presentation/stock_chart/widgets/stock_chart_widget.dart';
 
 class MarketView extends ConsumerWidget {
   const MarketView({super.key});
@@ -222,11 +223,14 @@ class CompanyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const StockChartView(),
-                settings: RouteSettings(arguments: item.symbol)));
+        // Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //         builder: (context) => const StockChartView(),
+        //         settings: RouteSettings(arguments: item.symbol)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return StockChartWidget(symbol: item.symbol);
+        }));
       },
       child: SizedBox(
         height: 80,

@@ -1,4 +1,4 @@
-final List<String> periods = [
+const List<String> periods = [
   'Last Day',
   'Last Week',
   'Last Month',

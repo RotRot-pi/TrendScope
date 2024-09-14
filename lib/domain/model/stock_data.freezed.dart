@@ -21,15 +21,15 @@ StockData _$StockDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$StockData {
   MetaData get metaData => throw _privateConstructorUsedError;
-  Map<String, DailyData>? get timeSeriesDaily =>
+  Map<String, TimeSeriesData>? get timeSeriesDaily =>
       throw _privateConstructorUsedError;
-  Map<String, WeeklyData>? get timeSeriesWeekly =>
+  Map<String, TimeSeriesData>? get timeSeriesWeekly =>
       throw _privateConstructorUsedError;
-  Map<String, MonthlyData>? get timeSeriesMonthly =>
+  Map<String, TimeSeriesData>? get timeSeriesMonthly =>
       throw _privateConstructorUsedError;
-  Map<String, YearlyData>? get timeSeriesYearly =>
+  Map<String, TimeSeriesData>? get timeSeriesYearly =>
       throw _privateConstructorUsedError;
-  Map<String, FiveYearsData>? get timeSeriesFiveYears =>
+  Map<String, TimeSeriesData>? get timeSeriesFiveYears =>
       throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,11 +45,11 @@ abstract class $StockDataCopyWith<$Res> {
   @useResult
   $Res call(
       {MetaData metaData,
-      Map<String, DailyData>? timeSeriesDaily,
-      Map<String, WeeklyData>? timeSeriesWeekly,
-      Map<String, MonthlyData>? timeSeriesMonthly,
-      Map<String, YearlyData>? timeSeriesYearly,
-      Map<String, FiveYearsData>? timeSeriesFiveYears});
+      Map<String, TimeSeriesData>? timeSeriesDaily,
+      Map<String, TimeSeriesData>? timeSeriesWeekly,
+      Map<String, TimeSeriesData>? timeSeriesMonthly,
+      Map<String, TimeSeriesData>? timeSeriesYearly,
+      Map<String, TimeSeriesData>? timeSeriesFiveYears});
 
   $MetaDataCopyWith<$Res> get metaData;
 }
@@ -82,23 +82,23 @@ class _$StockDataCopyWithImpl<$Res, $Val extends StockData>
       timeSeriesDaily: freezed == timeSeriesDaily
           ? _value.timeSeriesDaily
           : timeSeriesDaily // ignore: cast_nullable_to_non_nullable
-              as Map<String, DailyData>?,
+              as Map<String, TimeSeriesData>?,
       timeSeriesWeekly: freezed == timeSeriesWeekly
           ? _value.timeSeriesWeekly
           : timeSeriesWeekly // ignore: cast_nullable_to_non_nullable
-              as Map<String, WeeklyData>?,
+              as Map<String, TimeSeriesData>?,
       timeSeriesMonthly: freezed == timeSeriesMonthly
           ? _value.timeSeriesMonthly
           : timeSeriesMonthly // ignore: cast_nullable_to_non_nullable
-              as Map<String, MonthlyData>?,
+              as Map<String, TimeSeriesData>?,
       timeSeriesYearly: freezed == timeSeriesYearly
           ? _value.timeSeriesYearly
           : timeSeriesYearly // ignore: cast_nullable_to_non_nullable
-              as Map<String, YearlyData>?,
+              as Map<String, TimeSeriesData>?,
       timeSeriesFiveYears: freezed == timeSeriesFiveYears
           ? _value.timeSeriesFiveYears
           : timeSeriesFiveYears // ignore: cast_nullable_to_non_nullable
-              as Map<String, FiveYearsData>?,
+              as Map<String, TimeSeriesData>?,
     ) as $Val);
   }
 
@@ -121,11 +121,11 @@ abstract class _$$StockDataImplCopyWith<$Res>
   @useResult
   $Res call(
       {MetaData metaData,
-      Map<String, DailyData>? timeSeriesDaily,
-      Map<String, WeeklyData>? timeSeriesWeekly,
-      Map<String, MonthlyData>? timeSeriesMonthly,
-      Map<String, YearlyData>? timeSeriesYearly,
-      Map<String, FiveYearsData>? timeSeriesFiveYears});
+      Map<String, TimeSeriesData>? timeSeriesDaily,
+      Map<String, TimeSeriesData>? timeSeriesWeekly,
+      Map<String, TimeSeriesData>? timeSeriesMonthly,
+      Map<String, TimeSeriesData>? timeSeriesYearly,
+      Map<String, TimeSeriesData>? timeSeriesFiveYears});
 
   @override
   $MetaDataCopyWith<$Res> get metaData;
@@ -157,23 +157,23 @@ class __$$StockDataImplCopyWithImpl<$Res>
       timeSeriesDaily: freezed == timeSeriesDaily
           ? _value._timeSeriesDaily
           : timeSeriesDaily // ignore: cast_nullable_to_non_nullable
-              as Map<String, DailyData>?,
+              as Map<String, TimeSeriesData>?,
       timeSeriesWeekly: freezed == timeSeriesWeekly
           ? _value._timeSeriesWeekly
           : timeSeriesWeekly // ignore: cast_nullable_to_non_nullable
-              as Map<String, WeeklyData>?,
+              as Map<String, TimeSeriesData>?,
       timeSeriesMonthly: freezed == timeSeriesMonthly
           ? _value._timeSeriesMonthly
           : timeSeriesMonthly // ignore: cast_nullable_to_non_nullable
-              as Map<String, MonthlyData>?,
+              as Map<String, TimeSeriesData>?,
       timeSeriesYearly: freezed == timeSeriesYearly
           ? _value._timeSeriesYearly
           : timeSeriesYearly // ignore: cast_nullable_to_non_nullable
-              as Map<String, YearlyData>?,
+              as Map<String, TimeSeriesData>?,
       timeSeriesFiveYears: freezed == timeSeriesFiveYears
           ? _value._timeSeriesFiveYears
           : timeSeriesFiveYears // ignore: cast_nullable_to_non_nullable
-              as Map<String, FiveYearsData>?,
+              as Map<String, TimeSeriesData>?,
     ));
   }
 }
@@ -183,11 +183,11 @@ class __$$StockDataImplCopyWithImpl<$Res>
 class _$StockDataImpl implements _StockData {
   const _$StockDataImpl(
       {required this.metaData,
-      final Map<String, DailyData>? timeSeriesDaily,
-      final Map<String, WeeklyData>? timeSeriesWeekly,
-      final Map<String, MonthlyData>? timeSeriesMonthly,
-      final Map<String, YearlyData>? timeSeriesYearly,
-      final Map<String, FiveYearsData>? timeSeriesFiveYears})
+      final Map<String, TimeSeriesData>? timeSeriesDaily,
+      final Map<String, TimeSeriesData>? timeSeriesWeekly,
+      final Map<String, TimeSeriesData>? timeSeriesMonthly,
+      final Map<String, TimeSeriesData>? timeSeriesYearly,
+      final Map<String, TimeSeriesData>? timeSeriesFiveYears})
       : _timeSeriesDaily = timeSeriesDaily,
         _timeSeriesWeekly = timeSeriesWeekly,
         _timeSeriesMonthly = timeSeriesMonthly,
@@ -199,9 +199,9 @@ class _$StockDataImpl implements _StockData {
 
   @override
   final MetaData metaData;
-  final Map<String, DailyData>? _timeSeriesDaily;
+  final Map<String, TimeSeriesData>? _timeSeriesDaily;
   @override
-  Map<String, DailyData>? get timeSeriesDaily {
+  Map<String, TimeSeriesData>? get timeSeriesDaily {
     final value = _timeSeriesDaily;
     if (value == null) return null;
     if (_timeSeriesDaily is EqualUnmodifiableMapView) return _timeSeriesDaily;
@@ -209,9 +209,9 @@ class _$StockDataImpl implements _StockData {
     return EqualUnmodifiableMapView(value);
   }
 
-  final Map<String, WeeklyData>? _timeSeriesWeekly;
+  final Map<String, TimeSeriesData>? _timeSeriesWeekly;
   @override
-  Map<String, WeeklyData>? get timeSeriesWeekly {
+  Map<String, TimeSeriesData>? get timeSeriesWeekly {
     final value = _timeSeriesWeekly;
     if (value == null) return null;
     if (_timeSeriesWeekly is EqualUnmodifiableMapView) return _timeSeriesWeekly;
@@ -219,9 +219,9 @@ class _$StockDataImpl implements _StockData {
     return EqualUnmodifiableMapView(value);
   }
 
-  final Map<String, MonthlyData>? _timeSeriesMonthly;
+  final Map<String, TimeSeriesData>? _timeSeriesMonthly;
   @override
-  Map<String, MonthlyData>? get timeSeriesMonthly {
+  Map<String, TimeSeriesData>? get timeSeriesMonthly {
     final value = _timeSeriesMonthly;
     if (value == null) return null;
     if (_timeSeriesMonthly is EqualUnmodifiableMapView)
@@ -230,9 +230,9 @@ class _$StockDataImpl implements _StockData {
     return EqualUnmodifiableMapView(value);
   }
 
-  final Map<String, YearlyData>? _timeSeriesYearly;
+  final Map<String, TimeSeriesData>? _timeSeriesYearly;
   @override
-  Map<String, YearlyData>? get timeSeriesYearly {
+  Map<String, TimeSeriesData>? get timeSeriesYearly {
     final value = _timeSeriesYearly;
     if (value == null) return null;
     if (_timeSeriesYearly is EqualUnmodifiableMapView) return _timeSeriesYearly;
@@ -240,9 +240,9 @@ class _$StockDataImpl implements _StockData {
     return EqualUnmodifiableMapView(value);
   }
 
-  final Map<String, FiveYearsData>? _timeSeriesFiveYears;
+  final Map<String, TimeSeriesData>? _timeSeriesFiveYears;
   @override
-  Map<String, FiveYearsData>? get timeSeriesFiveYears {
+  Map<String, TimeSeriesData>? get timeSeriesFiveYears {
     final value = _timeSeriesFiveYears;
     if (value == null) return null;
     if (_timeSeriesFiveYears is EqualUnmodifiableMapView)
@@ -302,12 +302,13 @@ class _$StockDataImpl implements _StockData {
 
 abstract class _StockData implements StockData {
   const factory _StockData(
-      {required final MetaData metaData,
-      final Map<String, DailyData>? timeSeriesDaily,
-      final Map<String, WeeklyData>? timeSeriesWeekly,
-      final Map<String, MonthlyData>? timeSeriesMonthly,
-      final Map<String, YearlyData>? timeSeriesYearly,
-      final Map<String, FiveYearsData>? timeSeriesFiveYears}) = _$StockDataImpl;
+          {required final MetaData metaData,
+          final Map<String, TimeSeriesData>? timeSeriesDaily,
+          final Map<String, TimeSeriesData>? timeSeriesWeekly,
+          final Map<String, TimeSeriesData>? timeSeriesMonthly,
+          final Map<String, TimeSeriesData>? timeSeriesYearly,
+          final Map<String, TimeSeriesData>? timeSeriesFiveYears}) =
+      _$StockDataImpl;
 
   factory _StockData.fromJson(Map<String, dynamic> json) =
       _$StockDataImpl.fromJson;
@@ -315,15 +316,15 @@ abstract class _StockData implements StockData {
   @override
   MetaData get metaData;
   @override
-  Map<String, DailyData>? get timeSeriesDaily;
+  Map<String, TimeSeriesData>? get timeSeriesDaily;
   @override
-  Map<String, WeeklyData>? get timeSeriesWeekly;
+  Map<String, TimeSeriesData>? get timeSeriesWeekly;
   @override
-  Map<String, MonthlyData>? get timeSeriesMonthly;
+  Map<String, TimeSeriesData>? get timeSeriesMonthly;
   @override
-  Map<String, YearlyData>? get timeSeriesYearly;
+  Map<String, TimeSeriesData>? get timeSeriesYearly;
   @override
-  Map<String, FiveYearsData>? get timeSeriesFiveYears;
+  Map<String, TimeSeriesData>? get timeSeriesFiveYears;
   @override
   @JsonKey(ignore: true)
   _$$StockDataImplCopyWith<_$StockDataImpl> get copyWith =>
@@ -554,12 +555,12 @@ abstract class _MetaData implements MetaData {
       throw _privateConstructorUsedError;
 }
 
-DailyData _$DailyDataFromJson(Map<String, dynamic> json) {
-  return _DailyData.fromJson(json);
+TimeSeriesData _$TimeSeriesDataFromJson(Map<String, dynamic> json) {
+  return _TimeSeriesData.fromJson(json);
 }
 
 /// @nodoc
-mixin _$DailyData {
+mixin _$TimeSeriesData {
   String get open => throw _privateConstructorUsedError;
   String get high => throw _privateConstructorUsedError;
   String get low => throw _privateConstructorUsedError;
@@ -568,23 +569,24 @@ mixin _$DailyData {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DailyDataCopyWith<DailyData> get copyWith =>
+  $TimeSeriesDataCopyWith<TimeSeriesData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DailyDataCopyWith<$Res> {
-  factory $DailyDataCopyWith(DailyData value, $Res Function(DailyData) then) =
-      _$DailyDataCopyWithImpl<$Res, DailyData>;
+abstract class $TimeSeriesDataCopyWith<$Res> {
+  factory $TimeSeriesDataCopyWith(
+          TimeSeriesData value, $Res Function(TimeSeriesData) then) =
+      _$TimeSeriesDataCopyWithImpl<$Res, TimeSeriesData>;
   @useResult
   $Res call(
       {String open, String high, String low, String close, String volume});
 }
 
 /// @nodoc
-class _$DailyDataCopyWithImpl<$Res, $Val extends DailyData>
-    implements $DailyDataCopyWith<$Res> {
-  _$DailyDataCopyWithImpl(this._value, this._then);
+class _$TimeSeriesDataCopyWithImpl<$Res, $Val extends TimeSeriesData>
+    implements $TimeSeriesDataCopyWith<$Res> {
+  _$TimeSeriesDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -626,11 +628,11 @@ class _$DailyDataCopyWithImpl<$Res, $Val extends DailyData>
 }
 
 /// @nodoc
-abstract class _$$DailyDataImplCopyWith<$Res>
-    implements $DailyDataCopyWith<$Res> {
-  factory _$$DailyDataImplCopyWith(
-          _$DailyDataImpl value, $Res Function(_$DailyDataImpl) then) =
-      __$$DailyDataImplCopyWithImpl<$Res>;
+abstract class _$$TimeSeriesDataImplCopyWith<$Res>
+    implements $TimeSeriesDataCopyWith<$Res> {
+  factory _$$TimeSeriesDataImplCopyWith(_$TimeSeriesDataImpl value,
+          $Res Function(_$TimeSeriesDataImpl) then) =
+      __$$TimeSeriesDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -638,11 +640,11 @@ abstract class _$$DailyDataImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$DailyDataImplCopyWithImpl<$Res>
-    extends _$DailyDataCopyWithImpl<$Res, _$DailyDataImpl>
-    implements _$$DailyDataImplCopyWith<$Res> {
-  __$$DailyDataImplCopyWithImpl(
-      _$DailyDataImpl _value, $Res Function(_$DailyDataImpl) _then)
+class __$$TimeSeriesDataImplCopyWithImpl<$Res>
+    extends _$TimeSeriesDataCopyWithImpl<$Res, _$TimeSeriesDataImpl>
+    implements _$$TimeSeriesDataImplCopyWith<$Res> {
+  __$$TimeSeriesDataImplCopyWithImpl(
+      _$TimeSeriesDataImpl _value, $Res Function(_$TimeSeriesDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -654,7 +656,7 @@ class __$$DailyDataImplCopyWithImpl<$Res>
     Object? close = null,
     Object? volume = null,
   }) {
-    return _then(_$DailyDataImpl(
+    return _then(_$TimeSeriesDataImpl(
       open: null == open
           ? _value.open
           : open // ignore: cast_nullable_to_non_nullable
@@ -681,16 +683,16 @@ class __$$DailyDataImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$DailyDataImpl implements _DailyData {
-  const _$DailyDataImpl(
+class _$TimeSeriesDataImpl implements _TimeSeriesData {
+  const _$TimeSeriesDataImpl(
       {required this.open,
       required this.high,
       required this.low,
       required this.close,
       required this.volume});
 
-  factory _$DailyDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DailyDataImplFromJson(json);
+  factory _$TimeSeriesDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TimeSeriesDataImplFromJson(json);
 
   @override
   final String open;
@@ -705,14 +707,14 @@ class _$DailyDataImpl implements _DailyData {
 
   @override
   String toString() {
-    return 'DailyData(open: $open, high: $high, low: $low, close: $close, volume: $volume)';
+    return 'TimeSeriesData(open: $open, high: $high, low: $low, close: $close, volume: $volume)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DailyDataImpl &&
+            other is _$TimeSeriesDataImpl &&
             (identical(other.open, open) || other.open == open) &&
             (identical(other.high, high) || other.high == high) &&
             (identical(other.low, low) || other.low == low) &&
@@ -727,27 +729,28 @@ class _$DailyDataImpl implements _DailyData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DailyDataImplCopyWith<_$DailyDataImpl> get copyWith =>
-      __$$DailyDataImplCopyWithImpl<_$DailyDataImpl>(this, _$identity);
+  _$$TimeSeriesDataImplCopyWith<_$TimeSeriesDataImpl> get copyWith =>
+      __$$TimeSeriesDataImplCopyWithImpl<_$TimeSeriesDataImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DailyDataImplToJson(
+    return _$$TimeSeriesDataImplToJson(
       this,
     );
   }
 }
 
-abstract class _DailyData implements DailyData {
-  const factory _DailyData(
+abstract class _TimeSeriesData implements TimeSeriesData {
+  const factory _TimeSeriesData(
       {required final String open,
       required final String high,
       required final String low,
       required final String close,
-      required final String volume}) = _$DailyDataImpl;
+      required final String volume}) = _$TimeSeriesDataImpl;
 
-  factory _DailyData.fromJson(Map<String, dynamic> json) =
-      _$DailyDataImpl.fromJson;
+  factory _TimeSeriesData.fromJson(Map<String, dynamic> json) =
+      _$TimeSeriesDataImpl.fromJson;
 
   @override
   String get open;
@@ -761,854 +764,6 @@ abstract class _DailyData implements DailyData {
   String get volume;
   @override
   @JsonKey(ignore: true)
-  _$$DailyDataImplCopyWith<_$DailyDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-WeeklyData _$WeeklyDataFromJson(Map<String, dynamic> json) {
-  return _WeeklyData.fromJson(json);
-}
-
-/// @nodoc
-mixin _$WeeklyData {
-  String get open => throw _privateConstructorUsedError;
-  String get high => throw _privateConstructorUsedError;
-  String get low => throw _privateConstructorUsedError;
-  String get close => throw _privateConstructorUsedError;
-  String get volume => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $WeeklyDataCopyWith<WeeklyData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $WeeklyDataCopyWith<$Res> {
-  factory $WeeklyDataCopyWith(
-          WeeklyData value, $Res Function(WeeklyData) then) =
-      _$WeeklyDataCopyWithImpl<$Res, WeeklyData>;
-  @useResult
-  $Res call(
-      {String open, String high, String low, String close, String volume});
-}
-
-/// @nodoc
-class _$WeeklyDataCopyWithImpl<$Res, $Val extends WeeklyData>
-    implements $WeeklyDataCopyWith<$Res> {
-  _$WeeklyDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? open = null,
-    Object? high = null,
-    Object? low = null,
-    Object? close = null,
-    Object? volume = null,
-  }) {
-    return _then(_value.copyWith(
-      open: null == open
-          ? _value.open
-          : open // ignore: cast_nullable_to_non_nullable
-              as String,
-      high: null == high
-          ? _value.high
-          : high // ignore: cast_nullable_to_non_nullable
-              as String,
-      low: null == low
-          ? _value.low
-          : low // ignore: cast_nullable_to_non_nullable
-              as String,
-      close: null == close
-          ? _value.close
-          : close // ignore: cast_nullable_to_non_nullable
-              as String,
-      volume: null == volume
-          ? _value.volume
-          : volume // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$WeeklyDataImplCopyWith<$Res>
-    implements $WeeklyDataCopyWith<$Res> {
-  factory _$$WeeklyDataImplCopyWith(
-          _$WeeklyDataImpl value, $Res Function(_$WeeklyDataImpl) then) =
-      __$$WeeklyDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String open, String high, String low, String close, String volume});
-}
-
-/// @nodoc
-class __$$WeeklyDataImplCopyWithImpl<$Res>
-    extends _$WeeklyDataCopyWithImpl<$Res, _$WeeklyDataImpl>
-    implements _$$WeeklyDataImplCopyWith<$Res> {
-  __$$WeeklyDataImplCopyWithImpl(
-      _$WeeklyDataImpl _value, $Res Function(_$WeeklyDataImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? open = null,
-    Object? high = null,
-    Object? low = null,
-    Object? close = null,
-    Object? volume = null,
-  }) {
-    return _then(_$WeeklyDataImpl(
-      open: null == open
-          ? _value.open
-          : open // ignore: cast_nullable_to_non_nullable
-              as String,
-      high: null == high
-          ? _value.high
-          : high // ignore: cast_nullable_to_non_nullable
-              as String,
-      low: null == low
-          ? _value.low
-          : low // ignore: cast_nullable_to_non_nullable
-              as String,
-      close: null == close
-          ? _value.close
-          : close // ignore: cast_nullable_to_non_nullable
-              as String,
-      volume: null == volume
-          ? _value.volume
-          : volume // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$WeeklyDataImpl implements _WeeklyData {
-  const _$WeeklyDataImpl(
-      {required this.open,
-      required this.high,
-      required this.low,
-      required this.close,
-      required this.volume});
-
-  factory _$WeeklyDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$WeeklyDataImplFromJson(json);
-
-  @override
-  final String open;
-  @override
-  final String high;
-  @override
-  final String low;
-  @override
-  final String close;
-  @override
-  final String volume;
-
-  @override
-  String toString() {
-    return 'WeeklyData(open: $open, high: $high, low: $low, close: $close, volume: $volume)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$WeeklyDataImpl &&
-            (identical(other.open, open) || other.open == open) &&
-            (identical(other.high, high) || other.high == high) &&
-            (identical(other.low, low) || other.low == low) &&
-            (identical(other.close, close) || other.close == close) &&
-            (identical(other.volume, volume) || other.volume == volume));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, open, high, low, close, volume);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$WeeklyDataImplCopyWith<_$WeeklyDataImpl> get copyWith =>
-      __$$WeeklyDataImplCopyWithImpl<_$WeeklyDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$WeeklyDataImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _WeeklyData implements WeeklyData {
-  const factory _WeeklyData(
-      {required final String open,
-      required final String high,
-      required final String low,
-      required final String close,
-      required final String volume}) = _$WeeklyDataImpl;
-
-  factory _WeeklyData.fromJson(Map<String, dynamic> json) =
-      _$WeeklyDataImpl.fromJson;
-
-  @override
-  String get open;
-  @override
-  String get high;
-  @override
-  String get low;
-  @override
-  String get close;
-  @override
-  String get volume;
-  @override
-  @JsonKey(ignore: true)
-  _$$WeeklyDataImplCopyWith<_$WeeklyDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-MonthlyData _$MonthlyDataFromJson(Map<String, dynamic> json) {
-  return _MonthlyData.fromJson(json);
-}
-
-/// @nodoc
-mixin _$MonthlyData {
-  String get open => throw _privateConstructorUsedError;
-  String get high => throw _privateConstructorUsedError;
-  String get low => throw _privateConstructorUsedError;
-  String get close => throw _privateConstructorUsedError;
-  String get volume => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $MonthlyDataCopyWith<MonthlyData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MonthlyDataCopyWith<$Res> {
-  factory $MonthlyDataCopyWith(
-          MonthlyData value, $Res Function(MonthlyData) then) =
-      _$MonthlyDataCopyWithImpl<$Res, MonthlyData>;
-  @useResult
-  $Res call(
-      {String open, String high, String low, String close, String volume});
-}
-
-/// @nodoc
-class _$MonthlyDataCopyWithImpl<$Res, $Val extends MonthlyData>
-    implements $MonthlyDataCopyWith<$Res> {
-  _$MonthlyDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? open = null,
-    Object? high = null,
-    Object? low = null,
-    Object? close = null,
-    Object? volume = null,
-  }) {
-    return _then(_value.copyWith(
-      open: null == open
-          ? _value.open
-          : open // ignore: cast_nullable_to_non_nullable
-              as String,
-      high: null == high
-          ? _value.high
-          : high // ignore: cast_nullable_to_non_nullable
-              as String,
-      low: null == low
-          ? _value.low
-          : low // ignore: cast_nullable_to_non_nullable
-              as String,
-      close: null == close
-          ? _value.close
-          : close // ignore: cast_nullable_to_non_nullable
-              as String,
-      volume: null == volume
-          ? _value.volume
-          : volume // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$MonthlyDataImplCopyWith<$Res>
-    implements $MonthlyDataCopyWith<$Res> {
-  factory _$$MonthlyDataImplCopyWith(
-          _$MonthlyDataImpl value, $Res Function(_$MonthlyDataImpl) then) =
-      __$$MonthlyDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String open, String high, String low, String close, String volume});
-}
-
-/// @nodoc
-class __$$MonthlyDataImplCopyWithImpl<$Res>
-    extends _$MonthlyDataCopyWithImpl<$Res, _$MonthlyDataImpl>
-    implements _$$MonthlyDataImplCopyWith<$Res> {
-  __$$MonthlyDataImplCopyWithImpl(
-      _$MonthlyDataImpl _value, $Res Function(_$MonthlyDataImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? open = null,
-    Object? high = null,
-    Object? low = null,
-    Object? close = null,
-    Object? volume = null,
-  }) {
-    return _then(_$MonthlyDataImpl(
-      open: null == open
-          ? _value.open
-          : open // ignore: cast_nullable_to_non_nullable
-              as String,
-      high: null == high
-          ? _value.high
-          : high // ignore: cast_nullable_to_non_nullable
-              as String,
-      low: null == low
-          ? _value.low
-          : low // ignore: cast_nullable_to_non_nullable
-              as String,
-      close: null == close
-          ? _value.close
-          : close // ignore: cast_nullable_to_non_nullable
-              as String,
-      volume: null == volume
-          ? _value.volume
-          : volume // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$MonthlyDataImpl implements _MonthlyData {
-  const _$MonthlyDataImpl(
-      {required this.open,
-      required this.high,
-      required this.low,
-      required this.close,
-      required this.volume});
-
-  factory _$MonthlyDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MonthlyDataImplFromJson(json);
-
-  @override
-  final String open;
-  @override
-  final String high;
-  @override
-  final String low;
-  @override
-  final String close;
-  @override
-  final String volume;
-
-  @override
-  String toString() {
-    return 'MonthlyData(open: $open, high: $high, low: $low, close: $close, volume: $volume)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MonthlyDataImpl &&
-            (identical(other.open, open) || other.open == open) &&
-            (identical(other.high, high) || other.high == high) &&
-            (identical(other.low, low) || other.low == low) &&
-            (identical(other.close, close) || other.close == close) &&
-            (identical(other.volume, volume) || other.volume == volume));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, open, high, low, close, volume);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MonthlyDataImplCopyWith<_$MonthlyDataImpl> get copyWith =>
-      __$$MonthlyDataImplCopyWithImpl<_$MonthlyDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MonthlyDataImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _MonthlyData implements MonthlyData {
-  const factory _MonthlyData(
-      {required final String open,
-      required final String high,
-      required final String low,
-      required final String close,
-      required final String volume}) = _$MonthlyDataImpl;
-
-  factory _MonthlyData.fromJson(Map<String, dynamic> json) =
-      _$MonthlyDataImpl.fromJson;
-
-  @override
-  String get open;
-  @override
-  String get high;
-  @override
-  String get low;
-  @override
-  String get close;
-  @override
-  String get volume;
-  @override
-  @JsonKey(ignore: true)
-  _$$MonthlyDataImplCopyWith<_$MonthlyDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-YearlyData _$YearlyDataFromJson(Map<String, dynamic> json) {
-  return _YearlyData.fromJson(json);
-}
-
-/// @nodoc
-mixin _$YearlyData {
-  String get open => throw _privateConstructorUsedError;
-  String get high => throw _privateConstructorUsedError;
-  String get low => throw _privateConstructorUsedError;
-  String get close => throw _privateConstructorUsedError;
-  String get volume => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $YearlyDataCopyWith<YearlyData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $YearlyDataCopyWith<$Res> {
-  factory $YearlyDataCopyWith(
-          YearlyData value, $Res Function(YearlyData) then) =
-      _$YearlyDataCopyWithImpl<$Res, YearlyData>;
-  @useResult
-  $Res call(
-      {String open, String high, String low, String close, String volume});
-}
-
-/// @nodoc
-class _$YearlyDataCopyWithImpl<$Res, $Val extends YearlyData>
-    implements $YearlyDataCopyWith<$Res> {
-  _$YearlyDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? open = null,
-    Object? high = null,
-    Object? low = null,
-    Object? close = null,
-    Object? volume = null,
-  }) {
-    return _then(_value.copyWith(
-      open: null == open
-          ? _value.open
-          : open // ignore: cast_nullable_to_non_nullable
-              as String,
-      high: null == high
-          ? _value.high
-          : high // ignore: cast_nullable_to_non_nullable
-              as String,
-      low: null == low
-          ? _value.low
-          : low // ignore: cast_nullable_to_non_nullable
-              as String,
-      close: null == close
-          ? _value.close
-          : close // ignore: cast_nullable_to_non_nullable
-              as String,
-      volume: null == volume
-          ? _value.volume
-          : volume // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$YearlyDataImplCopyWith<$Res>
-    implements $YearlyDataCopyWith<$Res> {
-  factory _$$YearlyDataImplCopyWith(
-          _$YearlyDataImpl value, $Res Function(_$YearlyDataImpl) then) =
-      __$$YearlyDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String open, String high, String low, String close, String volume});
-}
-
-/// @nodoc
-class __$$YearlyDataImplCopyWithImpl<$Res>
-    extends _$YearlyDataCopyWithImpl<$Res, _$YearlyDataImpl>
-    implements _$$YearlyDataImplCopyWith<$Res> {
-  __$$YearlyDataImplCopyWithImpl(
-      _$YearlyDataImpl _value, $Res Function(_$YearlyDataImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? open = null,
-    Object? high = null,
-    Object? low = null,
-    Object? close = null,
-    Object? volume = null,
-  }) {
-    return _then(_$YearlyDataImpl(
-      open: null == open
-          ? _value.open
-          : open // ignore: cast_nullable_to_non_nullable
-              as String,
-      high: null == high
-          ? _value.high
-          : high // ignore: cast_nullable_to_non_nullable
-              as String,
-      low: null == low
-          ? _value.low
-          : low // ignore: cast_nullable_to_non_nullable
-              as String,
-      close: null == close
-          ? _value.close
-          : close // ignore: cast_nullable_to_non_nullable
-              as String,
-      volume: null == volume
-          ? _value.volume
-          : volume // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$YearlyDataImpl implements _YearlyData {
-  const _$YearlyDataImpl(
-      {required this.open,
-      required this.high,
-      required this.low,
-      required this.close,
-      required this.volume});
-
-  factory _$YearlyDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$YearlyDataImplFromJson(json);
-
-  @override
-  final String open;
-  @override
-  final String high;
-  @override
-  final String low;
-  @override
-  final String close;
-  @override
-  final String volume;
-
-  @override
-  String toString() {
-    return 'YearlyData(open: $open, high: $high, low: $low, close: $close, volume: $volume)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$YearlyDataImpl &&
-            (identical(other.open, open) || other.open == open) &&
-            (identical(other.high, high) || other.high == high) &&
-            (identical(other.low, low) || other.low == low) &&
-            (identical(other.close, close) || other.close == close) &&
-            (identical(other.volume, volume) || other.volume == volume));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, open, high, low, close, volume);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$YearlyDataImplCopyWith<_$YearlyDataImpl> get copyWith =>
-      __$$YearlyDataImplCopyWithImpl<_$YearlyDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$YearlyDataImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _YearlyData implements YearlyData {
-  const factory _YearlyData(
-      {required final String open,
-      required final String high,
-      required final String low,
-      required final String close,
-      required final String volume}) = _$YearlyDataImpl;
-
-  factory _YearlyData.fromJson(Map<String, dynamic> json) =
-      _$YearlyDataImpl.fromJson;
-
-  @override
-  String get open;
-  @override
-  String get high;
-  @override
-  String get low;
-  @override
-  String get close;
-  @override
-  String get volume;
-  @override
-  @JsonKey(ignore: true)
-  _$$YearlyDataImplCopyWith<_$YearlyDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-FiveYearsData _$FiveYearsDataFromJson(Map<String, dynamic> json) {
-  return _FiveYearsData.fromJson(json);
-}
-
-/// @nodoc
-mixin _$FiveYearsData {
-  String get open => throw _privateConstructorUsedError;
-  String get high => throw _privateConstructorUsedError;
-  String get low => throw _privateConstructorUsedError;
-  String get close => throw _privateConstructorUsedError;
-  String get volume => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $FiveYearsDataCopyWith<FiveYearsData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $FiveYearsDataCopyWith<$Res> {
-  factory $FiveYearsDataCopyWith(
-          FiveYearsData value, $Res Function(FiveYearsData) then) =
-      _$FiveYearsDataCopyWithImpl<$Res, FiveYearsData>;
-  @useResult
-  $Res call(
-      {String open, String high, String low, String close, String volume});
-}
-
-/// @nodoc
-class _$FiveYearsDataCopyWithImpl<$Res, $Val extends FiveYearsData>
-    implements $FiveYearsDataCopyWith<$Res> {
-  _$FiveYearsDataCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? open = null,
-    Object? high = null,
-    Object? low = null,
-    Object? close = null,
-    Object? volume = null,
-  }) {
-    return _then(_value.copyWith(
-      open: null == open
-          ? _value.open
-          : open // ignore: cast_nullable_to_non_nullable
-              as String,
-      high: null == high
-          ? _value.high
-          : high // ignore: cast_nullable_to_non_nullable
-              as String,
-      low: null == low
-          ? _value.low
-          : low // ignore: cast_nullable_to_non_nullable
-              as String,
-      close: null == close
-          ? _value.close
-          : close // ignore: cast_nullable_to_non_nullable
-              as String,
-      volume: null == volume
-          ? _value.volume
-          : volume // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$FiveYearsDataImplCopyWith<$Res>
-    implements $FiveYearsDataCopyWith<$Res> {
-  factory _$$FiveYearsDataImplCopyWith(
-          _$FiveYearsDataImpl value, $Res Function(_$FiveYearsDataImpl) then) =
-      __$$FiveYearsDataImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String open, String high, String low, String close, String volume});
-}
-
-/// @nodoc
-class __$$FiveYearsDataImplCopyWithImpl<$Res>
-    extends _$FiveYearsDataCopyWithImpl<$Res, _$FiveYearsDataImpl>
-    implements _$$FiveYearsDataImplCopyWith<$Res> {
-  __$$FiveYearsDataImplCopyWithImpl(
-      _$FiveYearsDataImpl _value, $Res Function(_$FiveYearsDataImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? open = null,
-    Object? high = null,
-    Object? low = null,
-    Object? close = null,
-    Object? volume = null,
-  }) {
-    return _then(_$FiveYearsDataImpl(
-      open: null == open
-          ? _value.open
-          : open // ignore: cast_nullable_to_non_nullable
-              as String,
-      high: null == high
-          ? _value.high
-          : high // ignore: cast_nullable_to_non_nullable
-              as String,
-      low: null == low
-          ? _value.low
-          : low // ignore: cast_nullable_to_non_nullable
-              as String,
-      close: null == close
-          ? _value.close
-          : close // ignore: cast_nullable_to_non_nullable
-              as String,
-      volume: null == volume
-          ? _value.volume
-          : volume // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$FiveYearsDataImpl implements _FiveYearsData {
-  const _$FiveYearsDataImpl(
-      {required this.open,
-      required this.high,
-      required this.low,
-      required this.close,
-      required this.volume});
-
-  factory _$FiveYearsDataImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FiveYearsDataImplFromJson(json);
-
-  @override
-  final String open;
-  @override
-  final String high;
-  @override
-  final String low;
-  @override
-  final String close;
-  @override
-  final String volume;
-
-  @override
-  String toString() {
-    return 'FiveYearsData(open: $open, high: $high, low: $low, close: $close, volume: $volume)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FiveYearsDataImpl &&
-            (identical(other.open, open) || other.open == open) &&
-            (identical(other.high, high) || other.high == high) &&
-            (identical(other.low, low) || other.low == low) &&
-            (identical(other.close, close) || other.close == close) &&
-            (identical(other.volume, volume) || other.volume == volume));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, open, high, low, close, volume);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FiveYearsDataImplCopyWith<_$FiveYearsDataImpl> get copyWith =>
-      __$$FiveYearsDataImplCopyWithImpl<_$FiveYearsDataImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FiveYearsDataImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _FiveYearsData implements FiveYearsData {
-  const factory _FiveYearsData(
-      {required final String open,
-      required final String high,
-      required final String low,
-      required final String close,
-      required final String volume}) = _$FiveYearsDataImpl;
-
-  factory _FiveYearsData.fromJson(Map<String, dynamic> json) =
-      _$FiveYearsDataImpl.fromJson;
-
-  @override
-  String get open;
-  @override
-  String get high;
-  @override
-  String get low;
-  @override
-  String get close;
-  @override
-  String get volume;
-  @override
-  @JsonKey(ignore: true)
-  _$$FiveYearsDataImplCopyWith<_$FiveYearsDataImpl> get copyWith =>
+  _$$TimeSeriesDataImplCopyWith<_$TimeSeriesDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

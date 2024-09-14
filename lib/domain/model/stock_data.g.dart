@@ -11,34 +11,29 @@ _$StockDataImpl _$$StockDataImplFromJson(Map<String, dynamic> json) =>
       metaData: MetaData.fromJson(json['Meta Data'] as Map<String, dynamic>),
       timeSeriesDaily:
           (json['Time Series (Daily)'] as Map<String, dynamic>?)?.map(
-                (k, e) =>
-                    MapEntry(k, DailyData.fromJson(e as Map<String, dynamic>)),
-              ) ??
-              {},
+        (k, e) =>
+            MapEntry(k, TimeSeriesData.fromJson(e as Map<String, dynamic>)),
+      ),
       timeSeriesWeekly:
           (json['Time Series (Weekly)'] as Map<String, dynamic>?)?.map(
-                (k, e) =>
-                    MapEntry(k, WeeklyData.fromJson(e as Map<String, dynamic>)),
-              ) ??
-              {},
+        (k, e) =>
+            MapEntry(k, TimeSeriesData.fromJson(e as Map<String, dynamic>)),
+      ),
       timeSeriesMonthly:
           (json['Time Series (Monthly)'] as Map<String, dynamic>?)?.map(
-                (k, e) => MapEntry(
-                    k, MonthlyData.fromJson(e as Map<String, dynamic>)),
-              ) ??
-              {},
+        (k, e) =>
+            MapEntry(k, TimeSeriesData.fromJson(e as Map<String, dynamic>)),
+      ),
       timeSeriesYearly:
           (json['Time Series (Yearly)'] as Map<String, dynamic>?)?.map(
-                (k, e) =>
-                    MapEntry(k, YearlyData.fromJson(e as Map<String, dynamic>)),
-              ) ??
-              {},
+        (k, e) =>
+            MapEntry(k, TimeSeriesData.fromJson(e as Map<String, dynamic>)),
+      ),
       timeSeriesFiveYears:
           (json['Time Series (5 Years)'] as Map<String, dynamic>?)?.map(
-                (k, e) => MapEntry(
-                    k, FiveYearsData.fromJson(e as Map<String, dynamic>)),
-              ) ??
-              {},
+        (k, e) =>
+            MapEntry(k, TimeSeriesData.fromJson(e as Map<String, dynamic>)),
+      ),
     );
 
 Map<String, dynamic> _$$StockDataImplToJson(_$StockDataImpl instance) =>
@@ -69,8 +64,8 @@ Map<String, dynamic> _$$MetaDataImplToJson(_$MetaDataImpl instance) =>
       'timeZone': instance.timeZone,
     };
 
-_$DailyDataImpl _$$DailyDataImplFromJson(Map<String, dynamic> json) =>
-    _$DailyDataImpl(
+_$TimeSeriesDataImpl _$$TimeSeriesDataImplFromJson(Map<String, dynamic> json) =>
+    _$TimeSeriesDataImpl(
       open: json['1. open'] as String? ?? '',
       high: json['2. high'] as String? ?? '',
       low: json['3. low'] as String? ?? '',
@@ -78,79 +73,8 @@ _$DailyDataImpl _$$DailyDataImplFromJson(Map<String, dynamic> json) =>
       volume: json['5. volume'] as String? ?? '',
     );
 
-Map<String, dynamic> _$$DailyDataImplToJson(_$DailyDataImpl instance) =>
-    <String, dynamic>{
-      'open': instance.open,
-      'high': instance.high,
-      'low': instance.low,
-      'close': instance.close,
-      'volume': instance.volume,
-    };
-
-_$WeeklyDataImpl _$$WeeklyDataImplFromJson(Map<String, dynamic> json) =>
-    _$WeeklyDataImpl(
-      open: json['1. open'] as String? ?? '',
-      high: json['2. high'] as String? ?? '',
-      low: json['3. low'] as String? ?? '',
-      close: json['4. close'] as String? ?? '',
-      volume: json['5. volume'] as String? ?? '',
-    );
-
-Map<String, dynamic> _$$WeeklyDataImplToJson(_$WeeklyDataImpl instance) =>
-    <String, dynamic>{
-      'open': instance.open,
-      'high': instance.high,
-      'low': instance.low,
-      'close': instance.close,
-      'volume': instance.volume,
-    };
-
-_$MonthlyDataImpl _$$MonthlyDataImplFromJson(Map<String, dynamic> json) =>
-    _$MonthlyDataImpl(
-      open: json['1. open'] as String? ?? '',
-      high: json['2. high'] as String? ?? '',
-      low: json['3. low'] as String? ?? '',
-      close: json['4. close'] as String? ?? '',
-      volume: json['5. volume'] as String? ?? '',
-    );
-
-Map<String, dynamic> _$$MonthlyDataImplToJson(_$MonthlyDataImpl instance) =>
-    <String, dynamic>{
-      'open': instance.open,
-      'high': instance.high,
-      'low': instance.low,
-      'close': instance.close,
-      'volume': instance.volume,
-    };
-
-_$YearlyDataImpl _$$YearlyDataImplFromJson(Map<String, dynamic> json) =>
-    _$YearlyDataImpl(
-      open: json['1. open'] as String? ?? '',
-      high: json['2. high'] as String? ?? '',
-      low: json['3. low'] as String? ?? '',
-      close: json['4. close'] as String? ?? '',
-      volume: json['5. volume'] as String? ?? '',
-    );
-
-Map<String, dynamic> _$$YearlyDataImplToJson(_$YearlyDataImpl instance) =>
-    <String, dynamic>{
-      'open': instance.open,
-      'high': instance.high,
-      'low': instance.low,
-      'close': instance.close,
-      'volume': instance.volume,
-    };
-
-_$FiveYearsDataImpl _$$FiveYearsDataImplFromJson(Map<String, dynamic> json) =>
-    _$FiveYearsDataImpl(
-      open: json['1. open'] as String? ?? '',
-      high: json['2. high'] as String? ?? '',
-      low: json['3. low'] as String? ?? '',
-      close: json['4. close'] as String? ?? '',
-      volume: json['5. volume'] as String? ?? '',
-    );
-
-Map<String, dynamic> _$$FiveYearsDataImplToJson(_$FiveYearsDataImpl instance) =>
+Map<String, dynamic> _$$TimeSeriesDataImplToJson(
+        _$TimeSeriesDataImpl instance) =>
     <String, dynamic>{
       'open': instance.open,
       'high': instance.high,

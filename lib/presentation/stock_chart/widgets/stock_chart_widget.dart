@@ -28,10 +28,11 @@ class StockChartWidget extends ConsumerWidget {
         title: Text("Stock Data for $symbol"),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildChartTypeSelector(ref),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,7 +43,7 @@ class StockChartWidget extends ConsumerWidget {
                 ],
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ElevatedButton(
                     onPressed: () {
@@ -131,7 +132,11 @@ class StockChartWidget extends ConsumerWidget {
             ),
             SizedBox(
               height: 100,
-              child: VolumeChartWidget(chartData: chartData),
+              child: VolumeChartWidget(
+                  minimumDate: config.minimumDate,
+                  maximumDate: config.maximumDate,
+                  dateFormat: config.dateFormat,
+                  chartData: chartData),
             ),
           ],
         );

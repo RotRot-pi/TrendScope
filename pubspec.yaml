@@ -45,6 +45,8 @@ dependencies:
   riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
   syncfusion_flutter_charts: ^26.2.13
+  syncfusion_flutter_core: ^26.2.13
+  syncfusion_flutter_sliders: ^26.2.13
   retrofit_generator: ^8.2.1
 
 dev_dependencies:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+
 import 'package:trendscope/presentation/common/objects/chart_data_object.dart';
 import 'package:trendscope/presentation/stock_chart/provider/stock_chart_provider.dart';
 
@@ -26,54 +27,104 @@ class CandleStickChartWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedChartType = ref.watch(selectedChartTypeProvider);
-    return SfCartesianChart(
-      zoomPanBehavior: ZoomPanBehavior(
-          enableSelectionZooming: true,
-          enablePinching: true,
-          enableDoubleTapZooming: true,
-          enableMouseWheelZooming: true,
-          enablePanning: true,
-          zoomMode: ZoomMode.xy),
-      primaryXAxis: DateTimeAxis(
-        minimum: minimumDate,
-        maximum: maximumDate,
-        dateFormat: dateFormat,
-        intervalType: DateTimeIntervalType.days,
-        majorGridLines: const MajorGridLines(width: 0.5, color: Colors.grey),
-      ),
-      primaryYAxis: NumericAxis(
-        minimum: minPrice,
-        maximum: maxPrice,
-        numberFormat:
-            NumberFormat.compactCurrency(symbol: '\$', decimalDigits: 0),
-        decimalPlaces: 2,
-        majorGridLines: const MajorGridLines(width: 0.5, color: Colors.grey),
-      ),
-      series: [
-        if (selectedChartType == 'Candlestick')
-          CandleSeries<ChartData, DateTime>(
-            dataSource: chartData,
-            xValueMapper: (ChartData data, _) => data.date,
-            lowValueMapper: (ChartData data, _) => data.low,
-            highValueMapper: (ChartData data, _) => data.high,
-            openValueMapper: (ChartData data, _) => data.open,
-            closeValueMapper: (ChartData data, _) => data.close,
-            enableTooltip: true,
-            trendlines: _getTrendlines(ref),
+    return Column(
+      children: [
+        SfCartesianChart(
+          legend: const Legend(isVisible: true, position: LegendPosition.top),
+          indicators: [
+            RsiIndicator<ChartData, DateTime>(
+              seriesName: 'Candlestick',
+              period: 14,
+              dataSource: chartData,
+              xValueMapper: (ChartData data, _) => data.date,
+              lowValueMapper: (ChartData data, _) => data.low,
+              highValueMapper: (ChartData data, _) => data.high,
+              closeValueMapper: (ChartData data, _) => data.close,
+              signalLineColor: Colors.red,
+            ),
+            SmaIndicator<ChartData, DateTime>(
+              seriesName: 'Candlestick',
+              period: 5,
+              dataSource: chartData,
+              xValueMapper: (ChartData data, _) => data.date,
+              lowValueMapper: (ChartData data, _) => data.low,
+              highValueMapper: (ChartData data, _) => data.high,
+              openValueMapper: (ChartData data, _) => data.open,
+              closeValueMapper: (ChartData data, _) => data.close,
+              signalLineColor: Colors.green,
+            ),
+            SmaIndicator<ChartData, DateTime>(
+              seriesName: 'Candlestick',
+              period: 20,
+              dataSource: chartData,
+              xValueMapper: (ChartData data, _) => data.date,
+              lowValueMapper: (ChartData data, _) => data.low,
+              highValueMapper: (ChartData data, _) => data.high,
+              openValueMapper: (ChartData data, _) => data.open,
+              closeValueMapper: (ChartData data, _) => data.close,
+              signalLineColor: Colors.amber,
+            ),
+            EmaIndicator<ChartData, DateTime>(
+                dataSource: chartData,
+                xValueMapper: (ChartData data, _) => data.date,
+                lowValueMapper: (ChartData data, _) => data.low,
+                highValueMapper: (ChartData data, _) => data.high,
+                closeValueMapper: (ChartData data, _) => data.close,
+                signalLineColor: Colors.blue,
+                seriesName: 'Candlestick')
+          ],
+          zoomPanBehavior: ZoomPanBehavior(
+              enableSelectionZooming: true,
+              enablePinching: true,
+              enableDoubleTapZooming: true,
+              enableMouseWheelZooming: true,
+              enablePanning: true,
+              zoomMode: ZoomMode.xy),
+          primaryXAxis: DateTimeAxis(
+            minimum: minimumDate,
+            maximum: maximumDate,
+            dateFormat: dateFormat,
+            intervalType: DateTimeIntervalType.days,
+            majorGridLines:
+                const MajorGridLines(width: 0.5, color: Colors.grey),
           ),
-        if (selectedChartType == 'Line')
-          LineSeries<ChartData, DateTime>(
-            dataSource: chartData,
-            xValueMapper: (ChartData data, _) => data.date,
-            yValueMapper: (ChartData data, _) => data.close,
+          primaryYAxis: NumericAxis(
+            minimum: minPrice,
+            maximum: maxPrice,
+            numberFormat:
+                NumberFormat.compactCurrency(symbol: '\$', decimalDigits: 0),
+            decimalPlaces: 2,
+            majorGridLines:
+                const MajorGridLines(width: 0.5, color: Colors.grey),
           ),
-        if (ref.watch(showOpenCloseMarkesProvider))
-          _buildScatterForOpeningPrice(),
-        if (ref.watch(showOpenCloseMarkesProvider))
-          _buildScatterForClosingPrice(),
+          series: [
+            if (selectedChartType == 'Candlestick')
+              CandleSeries<ChartData, DateTime>(
+                dataSource: chartData,
+                xValueMapper: (ChartData data, _) => data.date,
+                lowValueMapper: (ChartData data, _) => data.low,
+                highValueMapper: (ChartData data, _) => data.high,
+                openValueMapper: (ChartData data, _) => data.open,
+                closeValueMapper: (ChartData data, _) => data.close,
+                enableTooltip: true,
+                trendlines: _getTrendlines(ref),
+                name: 'Candlestick',
+              ),
+            if (selectedChartType == 'Line')
+              LineSeries<ChartData, DateTime>(
+                dataSource: chartData,
+                xValueMapper: (ChartData data, _) => data.date,
+                yValueMapper: (ChartData data, _) => data.close,
+              ),
+            if (ref.watch(showOpenCloseMarkesProvider))
+              _buildScatterForOpeningPrice(),
+            if (ref.watch(showOpenCloseMarkesProvider))
+              _buildScatterForClosingPrice(),
+          ],
+          tooltipBehavior: TooltipBehavior(enable: true),
+          crosshairBehavior: CrosshairBehavior(enable: true),
+        ),
       ],
-      tooltipBehavior: TooltipBehavior(enable: true),
-      crosshairBehavior: CrosshairBehavior(enable: true),
     );
   }
 

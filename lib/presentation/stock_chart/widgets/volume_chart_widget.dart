@@ -9,18 +9,25 @@ class VolumeChartWidget extends ConsumerWidget {
   const VolumeChartWidget({
     super.key,
     required this.chartData,
+    required this.minimumDate,
+    required this.maximumDate,
+    required this.dateFormat,
   });
 
   final List<ChartData> chartData;
+  final DateFormat dateFormat;
+  final DateTime minimumDate;
+  final DateTime maximumDate;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final selectedChartType = ref.watch(selectedChartTypeProvider);
     return SfCartesianChart(
       primaryXAxis: DateTimeAxis(
-        dateFormat: DateFormat.MMMEd(),
+        dateFormat: dateFormat,
         intervalType: DateTimeIntervalType.days,
         majorGridLines: const MajorGridLines(width: 0.5, color: Colors.grey),
+        minimum: minimumDate,
+        maximum: maximumDate,
       ),
       primaryYAxis: const NumericAxis(
         majorGridLines: MajorGridLines(width: 0.5, color: Colors.grey),

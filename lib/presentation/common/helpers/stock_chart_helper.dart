@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:trendscope/core/enums.dart';
 
 class StockChartHelpers {
@@ -68,6 +69,34 @@ class StockChartHelpers {
         return DateFormat('yyyy');
       case ChartTimeFrame.fiveYears:
         return DateFormat('yyyy');
+    }
+  }
+
+  static double getRangeSelectorInterval(ChartTimeFrame timeframe) {
+    switch (timeframe) {
+      case ChartTimeFrame.daily:
+        return 1.0; // 1 day interval
+      case ChartTimeFrame.weekly:
+        return 7.0; // 7 days interval
+      case ChartTimeFrame.monthly:
+        return 30.0; // Approximately 1 month interval
+      case ChartTimeFrame.yearly:
+        return 365.0; // 1 year interval
+      case ChartTimeFrame.fiveYears:
+        return 365.0 * 5; // 5 years interval
+    }
+  }
+
+  static DateIntervalType getDateIntervalType(ChartTimeFrame timeframe) {
+    switch (timeframe) {
+      case ChartTimeFrame.daily:
+      case ChartTimeFrame.weekly:
+        return DateIntervalType.days;
+      case ChartTimeFrame.monthly:
+        return DateIntervalType.months;
+      case ChartTimeFrame.yearly:
+      case ChartTimeFrame.fiveYears:
+        return DateIntervalType.years;
     }
   }
 }

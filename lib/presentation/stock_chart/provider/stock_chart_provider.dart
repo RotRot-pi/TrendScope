@@ -31,12 +31,13 @@ final selectedPeriodProvider = StateProvider<String>((ref) => periods.last);
 // Provider for Selected Timeframe
 final selectedTimeFrameProvider =
     StateProvider<ChartTimeFrame>((ref) => ChartTimeFrame.daily);
-
+// Provider for Selected Symbol
+final selectedSymbolProvider = StateProvider<String>((ref) => 'AAPL');
 // Provider for Chart Data (replace with your actual API call)
 final stockChartDataProvider =
-    FutureProvider.family<StockData, (String, ChartTimeFrame)>(
-        (ref, params) async {
-  final (symbol, timeframe) = params;
+    FutureProvider.family<StockData, ChartTimeFrame>((ref, params) async {
+  final symbol = ref.watch(selectedSymbolProvider);
+  final timeframe = params;
   try {
     switch (timeframe) {
       case ChartTimeFrame.daily:

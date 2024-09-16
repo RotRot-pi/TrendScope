@@ -99,4 +99,50 @@ class StockChartHelpers {
         return DateIntervalType.years;
     }
   }
+
+  static List<String> getValidPeriods(ChartTimeFrame timeframe) {
+    switch (timeframe) {
+      case ChartTimeFrame.daily:
+        return [
+          'Last Day',
+          'Last Week',
+          'Last Month',
+          'Last 3 Months',
+          'Last 6 Months',
+          'Last Year',
+          '5 Years'
+        ];
+      case ChartTimeFrame.weekly:
+        return [
+          'Last Week',
+          'Last Month',
+          'Last 3 Months',
+          'Last 6 Months',
+          'Last Year',
+          '5 Years'
+        ];
+      case ChartTimeFrame.monthly:
+        return [
+          'Last Month',
+          'Last 3 Months',
+          'Last 6 Months',
+          'Last Year',
+          '5 Years'
+        ];
+      case ChartTimeFrame.yearly:
+        return ['Last Year', '5 Years'];
+      case ChartTimeFrame.fiveYears:
+        return ['5 Years'];
+      default:
+        return [
+          'Last Day',
+          'Last Week',
+          'Last Month',
+          'Last 3 Months',
+          'Last 6 Months',
+          'Last Year',
+          '5 Years'
+        ];
+    }
+  }
 }

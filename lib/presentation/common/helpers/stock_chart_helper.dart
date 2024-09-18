@@ -1,8 +1,58 @@
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:trendscope/core/enums.dart';
+import 'package:trendscope/domain/model/stock_data.dart';
+import 'package:trendscope/presentation/common/objects/chart_data_object.dart';
 
 class StockChartHelpers {
+  static List<ChartData> processChartData(
+      StockData stockData, ChartTimeFrame timeFrame) {
+    // Switch between different time series based on the selected timeframe
+    Map<String, dynamic>? timeSeries;
+    switch (timeFrame) {
+      case ChartTimeFrame.daily:
+        timeSeries = stockData.timeSeriesDaily;
+        break;
+      case ChartTimeFrame.weekly:
+        timeSeries = stockData.timeSeriesWeekly;
+        break;
+      case ChartTimeFrame.monthly:
+        timeSeries = stockData.timeSeriesMonthly;
+        break;
+      case ChartTimeFrame.yearly:
+        timeSeries = stockData.timeSeriesYearly;
+        break;
+      case ChartTimeFrame.fiveYears:
+        timeSeries = stockData.timeSeriesFiveYears;
+        break;
+    }
+    // If there's no data available for the selected timeframe, return an empty list
+    if (timeSeries == null || timeSeries.isEmpty) {
+      return [];
+    }
+
+    // Sort the time series entries by date in descending order
+    var sortedEntries = timeSeries.entries.toList()
+      ..sort((a, b) => b.key.compareTo(a.key));
+
+    // If sorted entries are empty, return an empty list
+    if (sortedEntries.isEmpty) return [];
+
+    // Map each entry to ChartData, parsing the date and other values
+    return sortedEntries.map((entry) {
+      final date = DateFormat('yyyy-MM-dd').parse(entry.key);
+      final data = entry.value;
+      return ChartData(
+        date: date,
+        open: double.tryParse(data.open) ?? 0,
+        high: double.tryParse(data.high) ?? 0,
+        low: double.tryParse(data.low) ?? 0,
+        close: double.tryParse(data.close) ?? 0,
+        volume: double.tryParse(data.volume) ?? 0,
+      );
+    }).toList();
+  }
+
   static (DateTime, DateTime) calculateMinimumDate(
       DateTime maximumDate, DateTime minimumDate, String selectedPeriod) {
     switch (selectedPeriod) {

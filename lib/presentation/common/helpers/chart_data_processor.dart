@@ -38,13 +38,23 @@ class ChartDataProcessor {
       minPrice -= pricePadding;
       maxPrice += pricePadding;
     }
+//Caclulate Volume Chart Y-Axis to make it same scale with Candlestick
+    double maxVolume = chartData.map((e) => e.volume).reduce(math.max);
+    double minVolume = chartData.map((e) => e.volume).reduce(math.min);
+
+    final volumePadding = (maxVolume - minVolume) * 3;
+    // minVolume -= volumePadding;
+    maxVolume += volumePadding;
 
     return ChartConfig(
       minimumDate: minimumDate,
       maximumDate: maximumDate,
       minPrice: minPrice,
       maxPrice: maxPrice,
+      maxVolume: maxVolume,
+      minVolume: minVolume,
       dateFormat: StockChartHelpers.getDateFormat(selectedTimeFrame),
     );
   }
+  //Caclulate Volume Chart Y-Axis to make it same scale with Candlestick
 }

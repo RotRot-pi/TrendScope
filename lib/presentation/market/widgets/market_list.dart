@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trendscope/core/colors.dart';
-import 'package:trendscope/domain/model/stocks_response.dart';
+import 'package:trendscope/presentation/market/provider/market_provider.dart';
 import 'package:trendscope/presentation/market/widgets/companies_card_list.dart';
 
-class MarketList extends StatelessWidget {
+class MarketList extends ConsumerWidget {
   const MarketList({
     super.key,
-    required this.marketData,
   });
 
-  final AsyncValue<StocksResponse> marketData;
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final marketData = ref.watch(marketDataProvider);
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),

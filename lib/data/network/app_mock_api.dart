@@ -5,8 +5,8 @@ import 'package:trendscope/domain/model/stocks_response.dart';
 
 part 'app_mock_api.g.dart';
 
-@RestApi(baseUrl: "http://10.0.2.2:8000/") //for mobile
-// @RestApi(baseUrl: "http://127.0.0.1:8000/")
+// @RestApi(baseUrl: "http://10.0.2.2:8000/") //for mobile
+@RestApi(baseUrl: "http://127.0.0.1:8000/")
 abstract class AppMockApi {
   factory AppMockApi(Dio dio, {String baseUrl}) = _AppMockApi;
   @GET("/query")

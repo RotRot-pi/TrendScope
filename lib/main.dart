@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Stock Analysis',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
           colorSchemeSeed: primaryColor,
           textTheme: textTheme,

@@ -14,8 +14,8 @@ class _AppMockApi implements AppMockApi {
     this.baseUrl,
     this.errorLogger,
   }) {
-    // baseUrl ??= 'http://127.0.0.1:8000/';
-    baseUrl ??= 'http://10.0.2.2:8000/';
+    baseUrl ??= 'http://127.0.0.1:8000/';
+    // baseUrl ??= 'http://10.0.2.2:8000/';
   }
 
   final Dio _dio;

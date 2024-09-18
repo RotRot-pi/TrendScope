@@ -6,13 +6,11 @@ import 'package:trendscope/presentation/market/widgets/bottom_nav_bar.dart';
 import 'package:trendscope/presentation/market/widgets/market_list.dart';
 import 'package:trendscope/presentation/market/widgets/top_buttons_list.dart';
 
-class MarketView extends ConsumerWidget {
+class MarketView extends StatelessWidget {
   const MarketView({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final marketData = ref.watch(marketDataProvider);
-
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
@@ -23,20 +21,20 @@ class MarketView extends ConsumerWidget {
           ),
         ),
       ),
-      body: Stack(
+      body: const Stack(
         fit: StackFit.expand,
         children: [
-          const BackgroundWidget(),
+          BackgroundWidget(),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const TopButtonsList(),
-              MarketList(marketData: marketData),
+              TopButtonsList(),
+              MarketList(),
             ],
           ),
-          const Positioned(
+          Positioned(
             bottom: 16,
             left: 48,
             right: 48,

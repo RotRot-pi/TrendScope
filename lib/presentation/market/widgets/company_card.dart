@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trendscope/domain/model/stocks_response.dart';
 import 'package:trendscope/presentation/stock_chart/provider/stock_chart_provider.dart';
-import 'package:trendscope/presentation/stock_chart/view/stock_chart_Screen.dart';
+import 'package:trendscope/presentation/stock_chart/view/stock_chart_screen.dart';
 
 class CompanyCard extends ConsumerWidget {
   final Stock item;
@@ -32,21 +32,21 @@ class CompanyCard extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       item.companyName,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Text(
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       '${item.exchange}: ${item.symbol}',
                       style: Theme.of(context).textTheme.titleSmall,
                     ),
-                    // Uncomment if you want to include the last updated info
-                    // Text(
-                    //   'Last updated: ${DateFormat.yMd().add_jm().format(item.lastUpdated)}',
-                    //   style: Theme.of(context).textTheme.bodySmall,
-                    // ),
                   ],
                 ),
               ),
+              const SizedBox(width: 16),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -21,25 +21,34 @@ class _TopButtonsListState extends State<TopButtonsList> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          TopButton(
-            title: 'Most Viewed',
-            isActive: activeButton == 'Most Viewed',
-            onTap: setActiveButton,
-          ),
-          TopButton(
-            title: 'Top Gainers',
-            isActive: activeButton == 'Top Gainers',
-            onTap: setActiveButton,
-          ),
-          TopButton(
-            title: 'Top Losers',
-            isActive: activeButton == 'Top Losers',
-            onTap: setActiveButton,
-          ),
-        ],
+      child: SizedBox(
+        height: 40,
+        child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: 3,
+            separatorBuilder: (context, index) => const SizedBox(
+                  width: 16,
+                ),
+            itemBuilder: (context, index) {
+              List<TopButton> buttons = [
+                TopButton(
+                  title: 'Most Viewed',
+                  isActive: activeButton == 'Most Viewed',
+                  onTap: setActiveButton,
+                ),
+                TopButton(
+                  title: 'Top Gainers',
+                  isActive: activeButton == 'Top Gainers',
+                  onTap: setActiveButton,
+                ),
+                TopButton(
+                  title: 'Top Losers',
+                  isActive: activeButton == 'Top Losers',
+                  onTap: setActiveButton,
+                ),
+              ];
+              return buttons[index];
+            }),
       ),
     );
   }

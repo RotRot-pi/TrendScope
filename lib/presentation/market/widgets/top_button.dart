@@ -18,6 +18,7 @@ class TopButton extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTap(title),
       child: Container(
+        height: 50,
         decoration: BoxDecoration(
           color: isActive ? primaryColor : Colors.transparent,
           borderRadius: BorderRadius.circular(24),

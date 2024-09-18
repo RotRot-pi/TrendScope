@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:trendscope/core/colors.dart';
 import 'package:trendscope/presentation/stock_chart/provider/stock_chart_provider.dart';
 
 class TrendlineSelector extends ConsumerWidget {
@@ -8,45 +9,25 @@ class TrendlineSelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 2,
-              blurRadius: 5,
-              offset: const Offset(0, 2),
-            ),
-          ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Select Trendline',
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        const SizedBox(height: 8),
+        Wrap(
+          spacing: 8.0,
+          runSpacing: 4.0,
+          alignment: WrapAlignment.start,
           children: [
-            const Text(
-              'Select Trendline',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 12),
-            Wrap(
-              spacing: 8.0,
-              runSpacing: 4.0,
-              alignment: WrapAlignment.center,
-              children: [
-                _buildTrendlineChip(ref, 'Linear', TrendlineType.linear),
-                _buildTrendlineChip(
-                    ref, 'Moving Avg', TrendlineType.movingAverage),
-                _buildTrendlineChip(
-                    ref, 'Exponential', TrendlineType.exponential),
-              ],
-            ),
+            _buildTrendlineChip(ref, 'Linear', TrendlineType.linear),
+            _buildTrendlineChip(ref, 'Moving Avg', TrendlineType.movingAverage),
+            _buildTrendlineChip(ref, 'Exponential', TrendlineType.exponential),
           ],
         ),
-      ),
+      ],
     );
   }
 
@@ -55,9 +36,12 @@ class TrendlineSelector extends ConsumerWidget {
     final isSelected = ref.watch(trendlineVisibilityProvider(type));
 
     return ChoiceChip(
-      label: Text(label),
+      label: Text(
+        label,
+        style: TextStyle(color: isSelected ? Colors.white : primaryColor),
+      ),
       selected: isSelected,
-      selectedColor: Colors.blue, // Color for selected chips
+      selectedColor: primaryColor, // Color for selected chips
       onSelected: (bool selected) {
         ref.read(trendlineVisibilityProvider(type).notifier).state = selected;
       },

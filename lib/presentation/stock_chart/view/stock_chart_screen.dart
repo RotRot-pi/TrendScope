@@ -7,7 +7,7 @@ import 'package:trendscope/presentation/stock_chart/provider/stock_chart_provide
 import 'package:trendscope/presentation/stock_chart/widgets/chart_switcher.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/period_selector.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/stock_chart_widget.dart';
-import 'package:trendscope/presentation/stock_chart/widgets/stock_data_multi_selector_widget.dart';
+import 'package:trendscope/presentation/stock_chart/widgets/stock_data_selector_widget.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/time_frame_selector.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/toggle_button_widget.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/trendline_selector.dart';
@@ -31,7 +31,6 @@ class StockChartScreen extends ConsumerWidget {
             ),
           ),
           actions: const [
-            // CompareMenuWidget(),
             StockDataSelectorWidget(),
             ShowMenuButton(),
           ]),

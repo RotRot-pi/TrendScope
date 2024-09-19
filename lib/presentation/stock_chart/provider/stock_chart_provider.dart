@@ -31,31 +31,59 @@ final selectedPeriodProvider = StateProvider<String>((ref) => periods.last);
 // Provider for Selected Timeframe
 final selectedTimeFrameProvider =
     StateProvider<ChartTimeFrame>((ref) => ChartTimeFrame.daily);
+
 // Provider for Selected Symbol
 final selectedSymbolProvider = StateProvider<String>((ref) => 'AAPL');
-// Provider for Chart Data (replace with your actual API call)
+
+// Provider for selected stock symbols (for comparison)
+final selectedSymbolsProvider = StateProvider<List<String>>((ref) => ['AAPL']);
+
+// Provider for stock chart data
 final stockChartDataProvider =
-    FutureProvider.family<StockData, ChartTimeFrame>((ref, params) async {
-  final symbol = ref.watch(selectedSymbolProvider);
-  final timeframe = params;
+    FutureProvider.family<List<StockData>, ChartTimeFrame>(
+        (ref, timeframe) async {
+  final selectedSymbol = ref.watch(selectedSymbolProvider);
+  // Get the multi-selected symbols
+  final selectedSymbols = ref.watch(selectedSymbolsProvider);
+
+  // Determine which symbols to use based on the context
+  final symbolsToFetch =
+      selectedSymbols.isEmpty ? [selectedSymbol] : selectedSymbols;
+  // final symbols = ref.watch(selectedSymbolsProvider);
   try {
     switch (timeframe) {
       case ChartTimeFrame.daily:
-        return ref.read(getHistoricalDataDailyProvider).call(symbol);
+        return Future.wait(symbolsToFetch
+            .map((symbol) =>
+                ref.read(getHistoricalDataDailyProvider).call(symbol))
+            .toList());
       case ChartTimeFrame.weekly:
-        return ref.read(getHistoricalDataWeeklyProvider).call(symbol);
+        return Future.wait(symbolsToFetch
+            .map((symbol) =>
+                ref.read(getHistoricalDataWeeklyProvider).call(symbol))
+            .toList());
       case ChartTimeFrame.monthly:
-        return ref.read(getHistoricalDataMonthlyProvider).call(symbol);
+        return Future.wait(symbolsToFetch
+            .map((symbol) =>
+                ref.read(getHistoricalDataMonthlyProvider).call(symbol))
+            .toList());
       case ChartTimeFrame.yearly:
-        return ref.read(getHistoricalDataYearlyProvider).call(symbol);
+        return Future.wait(symbolsToFetch
+            .map((symbol) =>
+                ref.read(getHistoricalDataYearlyProvider).call(symbol))
+            .toList());
       case ChartTimeFrame.fiveYears:
-        return ref.read(getHistoricalDataFiveYearsProvider).call(symbol);
+        return Future.wait(symbolsToFetch
+            .map((symbol) =>
+                ref.read(getHistoricalDataFiveYearsProvider).call(symbol))
+            .toList());
     }
   } catch (e) {
     appLogger.d('Error fetching stock data: $e');
     rethrow;
   }
 });
+
 // get historical data
 final getHistoricalDataDailyProvider = Provider<GetHistoricalDataDaily>(
   (ref) => GetHistoricalDataDaily(

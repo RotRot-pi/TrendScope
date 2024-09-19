@@ -5,6 +5,7 @@ class ChartData {
   final double low;
   final double close;
   final double volume;
+  final String symbol;
 
   ChartData({
     required this.date,
@@ -13,5 +14,6 @@ class ChartData {
     required this.low,
     required this.close,
     required this.volume,
+    required this.symbol,
   });
 }

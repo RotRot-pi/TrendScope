@@ -49,6 +49,7 @@ class StockChartHelpers {
         low: double.tryParse(data.low) ?? 0,
         close: double.tryParse(data.close) ?? 0,
         volume: double.tryParse(data.volume) ?? 0,
+        symbol: stockData.metaData.symbol,
       );
     }).toList();
   }

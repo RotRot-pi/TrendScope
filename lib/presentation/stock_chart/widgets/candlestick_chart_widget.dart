@@ -32,7 +32,15 @@ class CandleStickChartWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedChartType = ref.watch(selectedChartTypeProvider);
-    final symbol = ref.watch(selectedSymbolProvider);
+    final selectedSymbol = ref.watch(selectedSymbolProvider);
+    final selectedSymbols = ref.watch(selectedSymbolsProvider);
+
+    // Determine which symbols to use based on the context
+    final symbolsToFetch =
+        selectedSymbols.isEmpty ? [selectedSymbol] : selectedSymbols;
+
+    // Determine the series name
+    final seriesName = symbolsToFetch.length == 1 ? symbolsToFetch[0] : null;
     return SizedBox(
       height: 300,
       child: SfCartesianChart(
@@ -52,7 +60,7 @@ class CandleStickChartWidget extends ConsumerWidget {
         ),
         indicators: [
           RsiIndicator<ChartData, DateTime>(
-            seriesName: symbol,
+            seriesName: seriesName,
             period: 14,
             dataSource: chartData,
             xValueMapper: (ChartData data, _) => data.date,
@@ -62,7 +70,7 @@ class CandleStickChartWidget extends ConsumerWidget {
             signalLineColor: Colors.red,
           ),
           SmaIndicator<ChartData, DateTime>(
-            seriesName: symbol,
+            seriesName: seriesName,
             period: 5,
             dataSource: chartData,
             xValueMapper: (ChartData data, _) => data.date,
@@ -73,7 +81,7 @@ class CandleStickChartWidget extends ConsumerWidget {
             signalLineColor: Colors.green,
           ),
           SmaIndicator<ChartData, DateTime>(
-            seriesName: symbol,
+            seriesName: seriesName,
             period: 20,
             dataSource: chartData,
             xValueMapper: (ChartData data, _) => data.date,
@@ -90,7 +98,7 @@ class CandleStickChartWidget extends ConsumerWidget {
               highValueMapper: (ChartData data, _) => data.high,
               closeValueMapper: (ChartData data, _) => data.close,
               signalLineColor: Colors.blue,
-              seriesName: symbol)
+              seriesName: seriesName)
         ],
         zoomPanBehavior: ZoomPanBehavior(
             enableSelectionZooming: true,
@@ -115,24 +123,31 @@ class CandleStickChartWidget extends ConsumerWidget {
           majorGridLines: const MajorGridLines(width: 0.5, color: Colors.grey),
         ),
         series: [
-          if (selectedChartType == 'Candlestick')
-            CandleSeries<ChartData, DateTime>(
-              dataSource: chartData,
-              xValueMapper: (ChartData data, _) => data.date,
-              lowValueMapper: (ChartData data, _) => data.low,
-              highValueMapper: (ChartData data, _) => data.high,
-              openValueMapper: (ChartData data, _) => data.open,
-              closeValueMapper: (ChartData data, _) => data.close,
-              enableTooltip: true,
-              trendlines: _getTrendlines(ref),
-              name: symbol,
-            ),
-          if (selectedChartType == 'Line')
-            LineSeries<ChartData, DateTime>(
-              dataSource: chartData,
-              xValueMapper: (ChartData data, _) => data.date,
-              yValueMapper: (ChartData data, _) => data.close,
-            ),
+          for (var i = 0; i < symbolsToFetch.length; i++)
+            if (selectedChartType == 'Candlestick')
+              CandleSeries<ChartData, DateTime>(
+                dataSource: chartData
+                    .where((element) => element.symbol == symbolsToFetch[i])
+                    .toList(), // Filter chart data
+                xValueMapper: (ChartData data, _) => data.date,
+                lowValueMapper: (ChartData data, _) => data.low,
+                highValueMapper: (ChartData data, _) => data.high,
+                openValueMapper: (ChartData data, _) => data.open,
+                closeValueMapper: (ChartData data, _) => data.close,
+                enableTooltip: true,
+                trendlines: _getTrendlines(ref),
+                name: symbolsToFetch[i],
+              )
+            else
+              LineSeries<ChartData, DateTime>(
+                dataSource: chartData
+                    .where((element) => element.symbol == symbolsToFetch[i])
+                    .toList(), // Filter chart data
+                xValueMapper: (ChartData data, _) => data.date,
+                yValueMapper: (ChartData data, _) => data.close,
+                name: symbolsToFetch[i],
+                color: _getSeriesColor(i),
+              ),
           if (ref.watch(showOpenCloseMarkesProvider))
             _buildScatterForOpeningPrice(),
           if (ref.watch(showOpenCloseMarkesProvider))
@@ -209,5 +224,11 @@ class CandleStickChartWidget extends ConsumerWidget {
     }
 
     return trendlines;
+  }
+
+  Color _getSeriesColor(int index) {
+    // You can define a list of colors or use a color generator
+    final colors = [Colors.blue, Colors.red, Colors.green, Colors.orange];
+    return colors[index % colors.length];
   }
 }

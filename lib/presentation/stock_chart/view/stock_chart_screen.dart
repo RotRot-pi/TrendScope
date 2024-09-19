@@ -7,6 +7,7 @@ import 'package:trendscope/presentation/stock_chart/provider/stock_chart_provide
 import 'package:trendscope/presentation/stock_chart/widgets/chart_switcher.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/period_selector.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/stock_chart_widget.dart';
+import 'package:trendscope/presentation/stock_chart/widgets/stock_data_multi_selector_widget.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/time_frame_selector.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/toggle_button_widget.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/trendline_selector.dart';
@@ -31,48 +32,13 @@ class StockChartScreen extends ConsumerWidget {
           ),
           actions: const [
             // CompareMenuWidget(),
+            StockDataSelectorWidget(),
             ShowMenuButton(),
           ]),
       body: const StockChartBody(),
     );
   }
 }
-
-// class CompareMenuWidget extends ConsumerWidget {
-//   const CompareMenuWidget({
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final remainingStocks = ref.watch(remainingStocksProvider);
-
-//     return IconButton(
-//         onPressed: () async {
-//           showMenu(
-//               context: context,
-//               position: const RelativeRect.fromLTRB(100, 200, 100, 100),
-//               items: []);
-//         },
-//         icon: const Icon(Icons.compare_arrows_outlined));
-//   }
-
-//   _buildListOfPopUpMenuItems(List<Stock> stocks) {
-//     stocks
-//         .map(
-//           (stock) => PopupMenuItem<Stock>(
-//               value: stock,
-//               onTap: () {},
-//               child: Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Image.network(stock.logoUrl, width: 30, height: 30),
-//                     Text(stock.symbol)
-//                   ])),
-//         )
-//         .toList();
-//   }
-// }
 
 class ShowMenuButton extends StatelessWidget {
   const ShowMenuButton({

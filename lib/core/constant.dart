@@ -7,3 +7,4 @@ const List<String> periods = [
   'Last Year',
   '5 Years',
 ];
+const List<String> stockSymbols = ['AAPL', 'GOOG', 'MSFT', 'AMZN', 'TSLA'];

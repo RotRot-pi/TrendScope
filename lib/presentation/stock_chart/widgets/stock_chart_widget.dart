@@ -13,18 +13,21 @@ class StockChartWidget extends ConsumerWidget {
         ref.watch(stockChartDataProvider(ref.watch(selectedTimeFrameProvider)));
     final selectedTimeFrame = ref.watch(selectedTimeFrameProvider);
     final selectedPeriod = ref.watch(selectedPeriodProvider);
+
     return Expanded(
       child: stockDataAsyncValue.when(
-        data: (stockData) {
-          final chartData =
-              StockChartHelpers.processChartData(stockData, selectedTimeFrame);
-
-          // If there's no data, show a placeholder message
-          if (chartData.isEmpty) {
+        data: (stockDataList) {
+          if (stockDataList.isEmpty) {
             return const Center(
               child: Text('No data available for this timeframe.'),
             );
           }
+          // Flatten the list of lists into a single list of ChartData
+          final chartData = stockDataList
+              .map((stockData) => StockChartHelpers.processChartData(
+                  stockData, selectedTimeFrame))
+              .expand((data) => data)
+              .toList();
 
           // Calculate chart configuration based on processed chart data
           final config = ChartDataProcessor.calculateChartConfig(
@@ -32,7 +35,6 @@ class StockChartWidget extends ConsumerWidget {
             selectedTimeFrame,
             selectedPeriod,
           );
-
           return CandleStickChartWidget(
             minimumDate: config.minimumDate,
             maximumDate: config.maximumDate,

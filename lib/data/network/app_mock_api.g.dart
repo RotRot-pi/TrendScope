@@ -14,8 +14,8 @@ class _AppMockApi implements AppMockApi {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://127.0.0.1:8000/';
-    // baseUrl ??= 'http://10.0.2.2:8000/';
+    // baseUrl ??= 'http://127.0.0.1:8000/';
+    baseUrl ??= alphaVantageUrl;
   }
 
   final Dio _dio;
@@ -25,7 +25,7 @@ class _AppMockApi implements AppMockApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<StockData> getHistoricalDataDaily(
+  Future<StockData> getHistoricalData(
     String function,
     String symbol,
   ) async {
@@ -63,19 +63,52 @@ class _AppMockApi implements AppMockApi {
     return _value;
   }
 
+  // @override
+  // Future<StocksResponse> getStocks() async {
+  //   final _extra = <String, dynamic>{};
+  //   final queryParameters = <String, dynamic>{};
+  //   final _headers = <String, dynamic>{};
+  //   const Map<String, dynamic>? _data = null;
+  //   final _options = _setStreamType<StocksResponse>(Options(
+  //     method: 'GET',
+  //     headers: _headers,
+  //     extra: _extra,
+  //   )
+  //       .compose(
+  //         _dio.options,
+  //         '/stocks',
+  //         queryParameters: queryParameters,
+  //         data: _data,
+  //       )
+  //       .copyWith(
+  //           baseUrl: _combineBaseUrls(
+  //         _dio.options.baseUrl,
+  //         baseUrl,
+  //       )));
+  //   final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+  //   late StocksResponse _value;
+  //   try {
+  //     _value = StocksResponse.fromJson(_result.data!);
+  //   } on Object catch (e, s) {
+  //     errorLogger?.logError(e, s, _options);
+  //     rethrow;
+  //   }
+  //   return _value;
+  // }
+
   @override
-  Future<StockData> getHistoricalDataWeekly(
-    String function,
-    String symbol,
-  ) async {
+  Future<TopMoversData> getTopMoversData({
+    required String function,
+    required String apiKey,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'function': function,
-      r'symbol': symbol,
+      r'apikey': apiKey,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<StockData>(Options(
+    final _options = _setStreamType<TopMoversData>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -91,10 +124,16 @@ class _AppMockApi implements AppMockApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
+    logmessage.Logger().i("Get over me");
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late StockData _value;
+    logmessage.Logger().i("Get over me");
+    late TopMoversData _value;
+    logmessage.Logger().i("Get over me");
     try {
-      _value = StockData.fromJson(_result.data!);
+      logmessage.Logger().i("Get over me");
+      logmessage.Logger().i("Results:${_result.data!}");
+      _value = TopMoversData.fromJson(_result.data!);
+      logmessage.Logger().i("Get over me");
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -103,18 +142,20 @@ class _AppMockApi implements AppMockApi {
   }
 
   @override
-  Future<StockData> getHistoricalDataMonthly(
-    String function,
-    String symbol,
-  ) async {
+  Future<BestMatches> searchSymbol({
+    required String function,
+    required String keywords,
+    required String apiKey,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'function': function,
-      r'symbol': symbol,
+      r'keywords': keywords,
+      r'apikey': apiKey,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<StockData>(Options(
+    final _options = _setStreamType<BestMatches>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -130,121 +171,16 @@ class _AppMockApi implements AppMockApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
+    logmessage.Logger().i("Hi");
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late StockData _value;
+    logmessage.Logger().i("Hi");
+    late BestMatches _value;
+    logmessage.Logger().i("Hi");
     try {
-      _value = StockData.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<StockData> getHistoricalDataYearly(
-    String function,
-    String symbol,
-  ) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'function': function,
-      r'symbol': symbol,
-    };
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<StockData>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/query',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late StockData _value;
-    try {
-      _value = StockData.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<StockData> getHistoricalDataFiveYears(
-    String function,
-    String symbol,
-  ) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'function': function,
-      r'symbol': symbol,
-    };
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<StockData>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/query',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late StockData _value;
-    try {
-      _value = StockData.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<StocksResponse> getStocks() async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<StocksResponse>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/stocks',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late StocksResponse _value;
-    try {
-      _value = StocksResponse.fromJson(_result.data!);
+      logmessage.Logger().i("Hi");
+      logmessage.Logger().i(_result.data!);
+      _value = BestMatches.fromJson(_result.data!);
+      logmessage.Logger().i("Hi");
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

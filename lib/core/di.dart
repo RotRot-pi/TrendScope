@@ -9,6 +9,7 @@ import 'package:trendscope/domain/usecases/get_historical_data_monthly.dart';
 import 'package:trendscope/domain/usecases/get_historical_data_weekly.dart';
 import 'package:trendscope/domain/usecases/get_historical_data_yearly.dart';
 import 'package:trendscope/domain/usecases/get_stocks.dart';
+import 'package:trendscope/domain/usecases/get_top_movers.dart';
 
 final instance = GetIt.instance;
 
@@ -35,4 +36,7 @@ setup() {
       () => GetHistoricalDataFiveYears(instance()));
 
   instance.registerLazySingleton<GetStocks>(() => GetStocks(instance()));
+
+  instance.registerLazySingleton<GetTopMoversData>(
+      () => GetTopMoversData(instance()));
 }

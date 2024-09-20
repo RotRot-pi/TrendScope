@@ -29,8 +29,8 @@ class MarketList extends ConsumerWidget {
             ],
           ),
           child: marketData.when(
-            data: (data) {
-              return CompaniesCardsList(data: data);
+            data: (stocks) {
+              return CompaniesCardsList(stocks: stocks);
             },
             error: (error, stackTrace) => Text('Error: $error'),
             loading: () => const Center(child: CircularProgressIndicator()),

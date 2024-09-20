@@ -6,16 +6,16 @@ import 'package:trendscope/presentation/market/widgets/company_card.dart';
 class CompaniesCardsList extends StatelessWidget {
   const CompaniesCardsList({
     super.key,
-    required this.data,
+    required this.stocks,
   });
 
-  final StocksResponse data;
+  final List<Stock> stocks;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: data.stocks.length,
+      itemCount: stocks.length,
       itemBuilder: (context, index) {
-        final item = data.stocks[index];
+        final item = stocks[index];
         return CompanyCard(item: item);
       },
     );

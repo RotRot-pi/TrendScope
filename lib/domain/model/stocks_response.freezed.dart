@@ -23,6 +23,10 @@ mixin _$Stock {
   String get symbol => throw _privateConstructorUsedError;
   String get companyName => throw _privateConstructorUsedError;
   String get exchange => throw _privateConstructorUsedError;
+  String get currency => throw _privateConstructorUsedError; // Add currency
+  String get type =>
+      throw _privateConstructorUsedError; // Add type (e.g., Equity)
+  String get region => throw _privateConstructorUsedError; // Add region
   String get currentPrice => throw _privateConstructorUsedError;
   String get percentageChange => throw _privateConstructorUsedError;
   String get logoUrl => throw _privateConstructorUsedError;
@@ -42,6 +46,9 @@ abstract class $StockCopyWith<$Res> {
       {String symbol,
       String companyName,
       String exchange,
+      String currency,
+      String type,
+      String region,
       String currentPrice,
       String percentageChange,
       String logoUrl,
@@ -64,6 +71,9 @@ class _$StockCopyWithImpl<$Res, $Val extends Stock>
     Object? symbol = null,
     Object? companyName = null,
     Object? exchange = null,
+    Object? currency = null,
+    Object? type = null,
+    Object? region = null,
     Object? currentPrice = null,
     Object? percentageChange = null,
     Object? logoUrl = null,
@@ -81,6 +91,18 @@ class _$StockCopyWithImpl<$Res, $Val extends Stock>
       exchange: null == exchange
           ? _value.exchange
           : exchange // ignore: cast_nullable_to_non_nullable
+              as String,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      region: null == region
+          ? _value.region
+          : region // ignore: cast_nullable_to_non_nullable
               as String,
       currentPrice: null == currentPrice
           ? _value.currentPrice
@@ -113,6 +135,9 @@ abstract class _$$StockImplCopyWith<$Res> implements $StockCopyWith<$Res> {
       {String symbol,
       String companyName,
       String exchange,
+      String currency,
+      String type,
+      String region,
       String currentPrice,
       String percentageChange,
       String logoUrl,
@@ -133,6 +158,9 @@ class __$$StockImplCopyWithImpl<$Res>
     Object? symbol = null,
     Object? companyName = null,
     Object? exchange = null,
+    Object? currency = null,
+    Object? type = null,
+    Object? region = null,
     Object? currentPrice = null,
     Object? percentageChange = null,
     Object? logoUrl = null,
@@ -150,6 +178,18 @@ class __$$StockImplCopyWithImpl<$Res>
       exchange: null == exchange
           ? _value.exchange
           : exchange // ignore: cast_nullable_to_non_nullable
+              as String,
+      currency: null == currency
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      region: null == region
+          ? _value.region
+          : region // ignore: cast_nullable_to_non_nullable
               as String,
       currentPrice: null == currentPrice
           ? _value.currentPrice
@@ -178,6 +218,9 @@ class _$StockImpl implements _Stock {
       {required this.symbol,
       required this.companyName,
       required this.exchange,
+      required this.currency,
+      required this.type,
+      required this.region,
       required this.currentPrice,
       required this.percentageChange,
       required this.logoUrl,
@@ -193,6 +236,15 @@ class _$StockImpl implements _Stock {
   @override
   final String exchange;
   @override
+  final String currency;
+// Add currency
+  @override
+  final String type;
+// Add type (e.g., Equity)
+  @override
+  final String region;
+// Add region
+  @override
   final String currentPrice;
   @override
   final String percentageChange;
@@ -203,7 +255,7 @@ class _$StockImpl implements _Stock {
 
   @override
   String toString() {
-    return 'Stock(symbol: $symbol, companyName: $companyName, exchange: $exchange, currentPrice: $currentPrice, percentageChange: $percentageChange, logoUrl: $logoUrl, lastUpdated: $lastUpdated)';
+    return 'Stock(symbol: $symbol, companyName: $companyName, exchange: $exchange, currency: $currency, type: $type, region: $region, currentPrice: $currentPrice, percentageChange: $percentageChange, logoUrl: $logoUrl, lastUpdated: $lastUpdated)';
   }
 
   @override
@@ -216,6 +268,10 @@ class _$StockImpl implements _Stock {
                 other.companyName == companyName) &&
             (identical(other.exchange, exchange) ||
                 other.exchange == exchange) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.region, region) || other.region == region) &&
             (identical(other.currentPrice, currentPrice) ||
                 other.currentPrice == currentPrice) &&
             (identical(other.percentageChange, percentageChange) ||
@@ -227,8 +283,18 @@ class _$StockImpl implements _Stock {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, symbol, companyName, exchange,
-      currentPrice, percentageChange, logoUrl, lastUpdated);
+  int get hashCode => Object.hash(
+      runtimeType,
+      symbol,
+      companyName,
+      exchange,
+      currency,
+      type,
+      region,
+      currentPrice,
+      percentageChange,
+      logoUrl,
+      lastUpdated);
 
   @JsonKey(ignore: true)
   @override
@@ -249,6 +315,9 @@ abstract class _Stock implements Stock {
       {required final String symbol,
       required final String companyName,
       required final String exchange,
+      required final String currency,
+      required final String type,
+      required final String region,
       required final String currentPrice,
       required final String percentageChange,
       required final String logoUrl,
@@ -263,6 +332,12 @@ abstract class _Stock implements Stock {
   @override
   String get exchange;
   @override
+  String get currency;
+  @override // Add currency
+  String get type;
+  @override // Add type (e.g., Equity)
+  String get region;
+  @override // Add region
   String get currentPrice;
   @override
   String get percentageChange;

@@ -8,6 +8,7 @@ import 'package:trendscope/presentation/stock_chart/widgets/chart_switcher.dart'
 import 'package:trendscope/presentation/stock_chart/widgets/period_selector.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/stock_chart_widget.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/stock_data_selector_widget.dart';
+import 'package:trendscope/presentation/stock_chart/widgets/stock_details_widget.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/time_frame_selector.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/toggle_button_widget.dart';
 import 'package:trendscope/presentation/stock_chart/widgets/trendline_selector.dart';
@@ -68,6 +69,7 @@ class StockChartBody extends StatelessWidget {
       children: [
         ChartSwitcher(),
         StockChartWidget(),
+        StockDetailWidget(),
       ],
     );
   }

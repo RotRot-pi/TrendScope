@@ -8,3 +8,6 @@ const List<String> periods = [
   '5 Years',
 ];
 const List<String> stockSymbols = ['AAPL', 'GOOG', 'MSFT', 'AMZN', 'TSLA'];
+
+const alphaVantageUrl = "https://www.alphavantage.co";
+const alphaVantageApiKey = "D356VJXT87LLGTID";

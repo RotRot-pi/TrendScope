@@ -43,7 +43,7 @@ TrendScope allows users to view historical stock data in various timeframes (dai
 <details>
 <summary>View Screenshots</summary>
 
-| Market Overview | Stock View | Overview | Stock Chart (Candlestick) | Stock Chart (Line) | Chart Configuration | Stock Comparison |
+| Market Overview | Stock View | Overview | Stock Chart (Candlestick) | Chart Configuration | Stock Comparison |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | ![Market Overview](screenshots/market_overview.png) | ![Stock View](screenshots/stock_view.png) | ![Chart Overview](screenshots/overview.png) | ![Candlestick Chart](screenshots/candlestick_chart.png) |  ![Chart Configuration](screenshots/chart_configuration.png) | ![Stock Comparison](screenshots/stock_comparison.png) |
 

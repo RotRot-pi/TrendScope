@@ -81,6 +81,8 @@ TrendScope employs a clear separation of concerns with a focus on maintainabilit
 
 ## Backend (Python/Flask)
 
+[Backend Link](https://github.com/RotRot-pi/trendscope-mock-api)
+
 * **Mock API:**  The backend is a simple Flask server that serves mock stock data from a JSON file (`sample_stock_data.json`).
 * **Endpoints:** Provides endpoints for fetching stock lists and historical data.
 

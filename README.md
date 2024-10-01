@@ -54,7 +54,7 @@ TrendScope allows users to view historical stock data in various timeframes (dai
 <details>
 <summary>Watch Demo</summary>
 
-![TrendScope Demo](screenshots/trendscope_demo.mp4)
+<video src="screenshots/trendscope_demo.mp4" width="300" controls></video>
 
 </details>
 
